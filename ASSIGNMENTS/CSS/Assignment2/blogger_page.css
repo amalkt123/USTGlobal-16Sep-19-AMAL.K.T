@@ -1,0 +1,195 @@
+div[class="navbar1"]{
+
+    text-align: center;
+    overflow: hidden;
+    height: 60px;
+    color: white;
+    background-color: black;
+    font-size: 17px;
+    padding-top: 20px;
+    font-weight: bold;
+    
+
+}
+a{
+
+    padding: 14px 16px;
+    margin-top: 30px;
+
+
+
+}
+.navbar1 a:hover{
+    background-color:goldenrod;
+    transition: all 2s;
+}
+
+
+img:hover{
+    transform: scale(1.1,1.3);
+    transition:all 1s;
+    box-shadow: 0 0 20px black;
+}
+
+
+button:hover{
+    transform: scale(1,1);
+    transition:all 1s;
+}
+
+
+.home{
+    padding-top: 100px;
+    padding-bottom: 5cm;
+    box-shadow: 0 0 3px black;
+    
+
+    
+}
+
+
+.img1{
+    width: 10cm;
+    height: 10cm;
+    border-radius: 50%;
+    
+}
+
+.b1{
+    width: 8cm;
+    height: 2cm;
+    border-radius: 10px;
+    margin-top: 1cm;
+    margin-left: 2cm;
+    border-style: solid;
+    box-shadow: 0 0 10px black;
+
+}
+
+
+.home .p1{
+
+    padding-top: 50px;
+    color: black;
+    font-weight: bold;
+    padding-left: 15cm;
+}
+
+.home .p2{
+
+    padding-top: 20px;
+    color:black;
+    font-size: 22px;
+    padding-right: 6cm;
+    padding-left: 15cm;
+}
+
+
+
+
+
+
+
+.section1{
+    padding-top: 2cm;
+    padding-bottom: 2cm;
+    box-shadow: 0 0 3px black;
+    
+}
+.p33{
+padding-top: 2cm;
+text-align: center;
+}
+.p34{
+    text-align: center;
+    font-size: 25px;
+    font-style: oblique;
+}
+.p3{
+margin-left: 35%;
+}
+
+.p4{
+    font-size: 25px;
+}
+div[class="col-md-3"]{
+border: none;
+margin-left: 1cm;
+margin-top: 2cm;
+text-align: center;
+font-size: 20px;
+}
+div[class="card"]{
+    box-shadow: 0 0 10px black;
+    border-radius: 10px;
+}
+
+div[class="col-md-2"]{
+    margin-top: 2cm;
+    }
+    
+
+.sub{
+    letter-spacing: 2px;
+}
+
+
+.b2{
+    height: 2cm;
+    margin-top: 2cm;
+    margin-bottom: 1cm;
+    width: 8cm;
+    border-radius: 10px;
+    border-style: solid;
+    box-shadow: 0 0 10px black;
+
+}
+
+.section2{
+    padding-bottom: 2cm;
+    
+}
+
+.section3{
+    padding-top: 3cm;
+    padding-bottom: 2cm;
+    background-color:black;
+    color: white;
+
+}
+
+div[class="row"]{
+    margin-top: 1cm;
+}
+
+input{
+    height:2cm;
+    border-radius: 10px;
+
+}
+textarea{
+border-radius:20px;
+}
+.b3{
+    height: 2cm;
+    width: 5cm;
+    border-radius: 10px;
+    border-style: solid;
+    box-shadow: 0 0 10px white;
+    
+}
+.findme{
+    margin-top: 2cm;
+    margin-bottom: 3cm;
+    text-align: center;
+}
+
+i{
+  padding-top: 1cm;
+  padding-left:10px;
+  padding-bottom: 2cm;
+}
+i:hover{
+    transform: scale(1.1,1.3);
+    transition: all 1s;
+}

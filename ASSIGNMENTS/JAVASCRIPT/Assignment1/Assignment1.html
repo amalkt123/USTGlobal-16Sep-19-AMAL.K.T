@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var car=new Object();
+    car.name="3 series";
+    car.brand="bmw";
+    var bike=new Object();
+    bike.name="fz";
+    bike.brand="yamaha";
+
+    var car1=new Object();
+    car.name="5 series";
+    car.brand="bmw";
+    var bike1=new Object();
+    bike.name="r15";
+    bike.brand="yamaha";
+
+    var car2=new Object();
+    car.name="evoque";
+    car.brand="landrover";
+    var bike2=new Object();
+    bike.name="rx100";
+    bike.brand="yamaha";
+
+
+
+    var car3=new Object();
+    car.name="a4";
+    car.brand="audi";
+   
+
+
+    var bus1={
+         name:"1614",
+         model:'sk',barnd:"tata",
+         getBus:function(){
+             return this.barnd+this.model+this.name;
+         }
+        
+    }
+    var getbus1=bus1.getBus();
+    var bus2={
+         name:"1610",
+         model:'sk',barnd:"tata",
+         getBus:function(){
+             return this.barnd+this.model+this.name;
+         }
+        
+    }
+    var getbus2=bus2.getBus();
+
+
+    var bus3={
+         name:"1614",
+         model:'cheeta',barnd:"leyland",
+         getBus:function(){
+             return this.barnd+this.model+this.name;
+         }
+        
+    }
+    var getbus3=bus3.getBus();
+
+
+
+    var bus4={
+         name:"1510",
+         model:'lynx',barnd:"leyland",
+         getBus:function(){
+             return this.barnd+this.model+this.name;
+         }
+        
+    }
+    var getbus4=bus4.getBus();
+
+
+    var bus5={
+         name:"1613",
+         model:'betz',barnd:"tata",
+         getBus:function(){
+             return this.barnd+this.model+this.name;
+         }
+        
+    }
+    var getbus5=bus5.getBus();
+
+    console.log(getbus1);
+    console.log(getbus2);
+    console.log(getbus3);
+    console.log(getbus4);
+    console.log(getbus5);
+
+
+    console.log(car1.name+car1.brand);
+    console.log(bike1.name,bike1.brand);
+
+    console.log(car2.name+car2.brand);
+    console.log(bike2.name,bike2.brand);
+
+    console.log(car3.name+car3.brand);
+
+
+
+
+
+    var tata=['nano','indica','safari','hexa','harrier'];
+    var mm=['thar','xylo','xuv500','xuv300'];
+    var ms=['800','alto','wagon r','swift'];
+    var hy=['santro','eon','i10','i20'];
+    var ty=['innova','fortuner','liva','land cruiser'];
+
+
+    console.log(tata);
+    console.log(mm);
+    console.log(hy);
+    console.log(ms);
+    console.log(hy);
+    console.log(ty);
+    var color=new Array('red','blue','green','yello');
+    var dress=new Array("pants",'shirt','dothi');
+    var brand=new Array("pe",'lp','allensolly','otto');
+    var tree= new Array("coconut",'tapioca','arikkanut','jackfruit');
+    var rever = new Array('kaveri','pamba','periyar');
+    console.log(tree);
+    console.log(dress);
+    console.log(brand);
+    console.log(rever);
+    console.log(color);
+    var s1="amal"
+    var student =new Object(s1)
+    console.log(student);
+
+    var student =new Object(s1="amal")
+    console.log(student);
+
+   for (let index = 0; index < tree.length; index++) {
+       const element = tree[index];
+       console.log(element);
+       
+   }
+    </script>
+</body>
+</html>

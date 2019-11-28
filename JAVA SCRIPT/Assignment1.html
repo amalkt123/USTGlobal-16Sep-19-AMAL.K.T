@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var car=new Object();
+    car.name="3 series";
+    car.brand="bmw";
+    var bike=new Object();
+    bike.name="fz";
+    bike.brand="yamaha";
+    var bus={
+         name:"1614",
+         model:'sk',barnd:"tata",
+         getBus:function(){
+             return this.barnd+this.model+this.name;
+         }
+    }
+    var getbus=bus.getBus();
+    console.log(getbus);
+    console.log(car.name+car.brand);
+    console.log(bike.name,bike.brand);
+    </script>
+</body>
+</html>
