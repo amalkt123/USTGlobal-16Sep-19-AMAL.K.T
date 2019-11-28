@@ -1,0 +1,24 @@
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="text-center  col-md-5 offset-4 mt-5">
+      <!-- <input type="search" class="col-md-6" placeholder="search"  [(ngModel])="selectedvalue"> -->
+      <input type="search" class="col-md-6" placeholder="search" #srch="ngModel" ngModel>
+      <button class="btn btn-outline-primary"  (click)="selectedSearch(srch)">search</button>
+        </div>
+     </div>
+    </div>
+   <div class="col-md-12 mt-5">
+    <div class="row">
+    <div class="col-md-10 offset-1">
+        <div class="card card-body"  *ngFor="let s of search">
+    
+            <img src="{{s.urlToImage}}" alt="">
+            <h2>{{s.title}}</h2>
+    
+         </div>
+     </div>
+    
+    
+    </div>
+    </div>

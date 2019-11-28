@@ -1,0 +1,79 @@
+package com.ustglobal.contactfileapp;
+
+import java.util.Scanner;
+
+import javax.swing.text.AbstractDocument.BranchElement;
+
+public class App {
+	static Scanner sc=new Scanner(System.in);
+	static boolean mainOptionConditon=true;
+	static boolean caseConditon2=true;
+	//static boolean caseConditon3=true;
+	public static void main(String[] args) {
+		while(mainOptionConditon) {
+			System.out.println("-----------------------------select option--------------------------------");
+			System.out.println("Press 1 To Show All Conatcts");
+			System.out.println("Press 2 To Search For Contact (using Name)");
+			System.out.println("Press # To Operate On Contacts");
+			System.out.println("---------------------------------------------------------------------------");
+			int option=sc.nextInt();
+			switch (option) {
+			case 1:
+
+				break;
+			case 2:
+				while(caseConditon2) {
+					System.out.println("Enter name");
+					String name=sc.next();
+
+					System.out.println("Press 1 To Call");
+					System.out.println("Press2 To Message");
+					System.out.println("Pree 3 to Go back To Main Menu");
+
+					int caseOption2=sc.nextInt();
+					switch (caseOption2) {
+					case 1:
+
+						break;
+					case 2:
+
+						break;
+					case 3:
+						caseConditon2=false;
+						break;
+
+
+					default:
+						break;
+					}
+				}
+				break;
+			case 3:
+				
+					System.out.println("Press 1 To Add Contact");
+					System.out.println("Press 2 To Delete Contact");
+					System.out.println("Press 3 To Edit Contact");
+				
+
+				
+
+				break;
+
+
+			default:
+				System.out.println("select option is wrong ");
+				break;
+			}
+
+
+
+
+
+
+
+
+
+		}
+	}
+
+}

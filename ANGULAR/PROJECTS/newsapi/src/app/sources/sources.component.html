@@ -1,0 +1,35 @@
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="text-center  col-md-5 offset-4 mt-5">
+    
+        <select class="col-md-5 text-center" (click)="selectedSource($event)">
+                <option value="" selected disabled>---select source---------</option>
+                <option value="the-times-of-india">TIMES OF INDIA</option>
+                <option value="bbc-news">BBC NEWS</option>
+                <option value="fox-news">FOX NEWS</option>
+                <option value="espn">ESPN</option>
+                <option value="news24">NEWS 24</option>
+                <option value="the-hindu">THE HINDU</option>
+                <option value="mirror">MIRROR</option>
+                <option value="usa-today">USA TODAY</option>
+                <option value="national-geographic">NATTIONAL GEOGRAPHICS</option>
+            </select>
+        </div>
+    
+     </div>
+    </div>
+   <div class="col-md-12 mt-5">
+    <div class="row">
+    <div class="col-md-10 offset-1">
+        <div class="card card-body"  *ngFor="let n of srcn">
+    
+                <img src="{{n.urlToImage}}" alt="">
+                <h2>{{n.title}}</h2>
+    
+         </div>
+     </div>
+    
+    
+    </div>
+    </div>

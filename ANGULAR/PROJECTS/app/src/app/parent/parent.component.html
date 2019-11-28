@@ -1,0 +1,10 @@
+<div><div class="col-md-4 mt-2 mb-2 float-left card card-body" style="margin-bottom: 10cm;">
+    <div class="card card-body" *ngFor="let car of Cars">
+<img src="{{car.imgurl}}" alt="" (click)="sendCar(car)">
+<h1>{{car.name}}</h1>
+    </div>
+</div>
+<div>
+<app-child [car]="selectedCar"></app-child>
+</div>
+</div>

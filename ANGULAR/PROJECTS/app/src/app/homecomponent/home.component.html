@@ -1,0 +1,17 @@
+<!-- <div class="col-md-6 offset-3 card mt-5 mb-5 bg-primary">
+    <img class=" d-block rounded-circle mb-5 mt-5" src="https://cdn.pixabay.com/photo/2019/09/27/14/38/zoo-4508682__340.jpg">
+<h1>How to Write Powerful Homepage Content for Your B2B Website</h1>
+<h3><p>Within a few seconds of landing on your website,
+     visitors have already formed their first impression of your company.
+      Your homepage is like a hotel lobby. visitors aren't going to linger there for long,
+       but they expect it to be attractive, clean and easy to navigate.</p></h3>
+
+</div> -->
+
+
+
+<div class="container col-md-8 offset-2 card card-body" *ngFor="let new of news">
+    <img src="{{new.urlToImage}}">
+    <h1>{{new.title}}</h1>
+    
+</div>

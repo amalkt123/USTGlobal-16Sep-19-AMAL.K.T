@@ -1,0 +1,45 @@
+<div class="col-md-12">
+<div class="row">
+<div class="col-md-3">
+    <div class="card-head text-center"><h2>Entertainment News</h2></div>
+    <div class="card card-body" *ngFor="let en of entmt">
+     <img src="{{en.urlToImage}}" alt="" style="height: 350px; width:300px;">
+     <h2>{{en.title}}</h2>
+
+     </div>
+ </div>
+
+
+<div class="col-md-6">
+        <div class="card-head text-center"><h2>India Top News</h2></div>
+        <div class="card card-body" *ngFor="let n of in"> 
+    
+            <img src="{{n.urlToImage}}" alt=""  style="height: 415px;">
+            <h2>{{in.title}}</h2>
+          </div>
+    
+    </div>
+    <div class="col-md-3">
+            <div class="card-head text-center"><h2>Sports News News</h2></div>
+            <div class="card card-body" *ngFor="let n1 of sn">
+        
+                <img src="{{n1.urlToImage}}" alt=""  style="height: 350px; width:300px;">
+                <h2>{{sn.title}}</h2>
+        
+        </div>
+        </div>
+        
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+</div>

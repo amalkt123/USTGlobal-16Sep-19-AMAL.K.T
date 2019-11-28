@@ -1,0 +1,13 @@
+package com.ustglobal.contactfileapp.dao;
+
+import java.util.List;
+
+import com.ustglobal.contactfileapp.dto.ContactBean;
+
+public class ContactFileJdbcImpl  implements ContactFileDao{
+	String URL="jdbc:mysql://localhost:3306?user=root&password=mysql";
+	String DRIVER="com.mysql.jdbc.Driver";
+	String INSERT_QUERY="insert into contact values(?,?,?)";
+	String SELECT_ALL_QUERY="";
+	String UPDATE_QUERY="";
+	}

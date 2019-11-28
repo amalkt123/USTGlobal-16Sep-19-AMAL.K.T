@@ -1,0 +1,70 @@
+<p>form2 works!</p>
+<form action="" class="col-md-4 offset-4 mt-5 card card-body" #form='ngForm' (ngSubmit)="loginData(form)">
+    <h1 class="text-center bg-dark text-white">candidate</h1>
+
+<div class="form-group" >
+    <input type="text" name="cname" id="cname" class="form-control" placeholder="candidate name....."   #cname="ngModel" ngModel  required>
+    <div *ngIf="cname.touched && cname.invalid">
+        <p class="alert alert-danger" *ngIf="cname.errors.required">this field is required</p>
+    </div>
+</div>
+
+
+<div class="form-group" >
+    <input type="text" name="yoe" id="yop" class="form-control" placeholder="year of experiance....."   #yoe="ngModel" ngModel  required>
+    <div *ngIf="yoe.touched && yoe.invalid">
+        <p class="alert alert-danger" *ngIf="yoe.errors.required">this field is required</p>
+    </div>
+</div>
+
+
+
+<div class="form-group" >
+    <div class="form-control">
+        skill
+    </div>
+    <input type="radio" name="skill" value="java" #skill="ngModel" ngModel required>java<br>
+    <input type="radio" name="skill" value="angular" #skill="ngModel" ngModel>angular<br>
+    <input type="radio" name="skill" value="sql" #skill="ngModel" ngModel>sql<br>
+    <input type="radio" name="skill" value="spring" #skill="ngModel" ngModel>spring<br>
+
+      
+    <div *ngIf="skill.touched && skill.invalid">
+        <p class="alert alert-danger" *ngIf="skill.errors.required">this field is required</p>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="form-group" >
+    <input type="text" name="cctc" id="mctc" class="form-control" placeholder="cctc....."   #cctc="ngModel" ngModel  required>
+    <div *ngIf="cctc.touched && cctc.invalid">
+        <p class="alert alert-danger" *ngIf="cctc.errors.required">this field is required</p>
+    </div>
+</div>
+
+
+
+<div class="form-group" >
+        <input type="text" name="ectc" id="ectc" class="form-control" placeholder="ectc....."   #ectc="ngModel" ngModel  required>
+        <div *ngIf="ectc.touched && ectc.invalid">
+            <p class="alert alert-danger" *ngIf="cctc.errors.required">this field is required</p>
+        </div>
+    </div>
+
+<div class="form-group" >
+    <input type="text" name="relocate" id="relocate" class="form-control" placeholder="rady to relocate....."   #relocate="ngModel" ngModel  required>
+    <div *ngIf="relocate.touched && relocate.invalid">
+        <p class="alert alert-danger" *ngIf="relocate.errors.required">this field is required</p>
+    </div>
+</div>
+
+<div class="form-group">
+    <button type="submit" [disabled]="form.invalid" class="btn-outline-success float-right">shedule interview</button>
+</div>
+
+
+</form>

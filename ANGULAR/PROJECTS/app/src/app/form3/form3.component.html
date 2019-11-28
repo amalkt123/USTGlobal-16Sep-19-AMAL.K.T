@@ -1,0 +1,70 @@
+<p>form3 works!</p>
+<p>form2 works!</p>
+<form action="" class="col-md-4 offset-4 mt-5 card card-body" #form='ngForm' (ngSubmit)="loginData(form)">
+    <h1 class="text-center bg-dark text-white">candidate</h1>
+
+<div class="form-group" >
+    <input type="text" name="uname" id="uname" class="form-control" placeholder="user name....."   #uname="ngModel" ngModel  required>
+    <div *ngIf="uname.touched && uname.invalid">
+        <p class="alert alert-danger" *ngIf="uname.errors.required">this field is required</p>
+    </div>
+</div>
+
+
+<div class="form-group" >
+    <input type="text" name="age" id="age" class="form-control" placeholder="user age....."   #age="ngModel" ngModel  required>
+    <div *ngIf="age.touched && age.invalid">
+        <p class="alert alert-danger" *ngIf="age.errors.required">this field is required</p>
+    </div>
+</div>
+
+
+
+<div class="form-group" >
+    <div class="form-control">
+        Gender
+    </div>
+    <input type="radio" name="gender" value="male" #gender="ngModel" ngModel required>male<br>
+    <input type="radio" name="gender" value="female" #gender="ngModel" ngModel>female<br>
+    <input type="radio" name="gender" value="other" #gender="ngModel" ngModel>others<br>
+
+      
+    <div *ngIf="gender.touched && gender.invalid">
+        <p class="alert alert-danger" *ngIf="gender.errors.required">this field is required</p>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="form-group" >
+    <input type="text" name="cno" id="cno" class="form-control" placeholder="contact nmber....."   #cno="ngModel" ngModel  required>
+    <div *ngIf="cno.touched && cno.invalid">
+        <p class="alert alert-danger" *ngIf="cno.errors.required">this field is required</p>
+    </div>
+</div>
+
+
+
+<div class="form-group" >
+        <input type="password" name="password" id="password" class="form-control" placeholder="password....."   #password="ngModel" ngModel  required>
+        <div *ngIf="password.touched && password.invalid">
+            <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+        </div>
+    </div>
+
+<div class="form-group" >
+    <input type="password" name="rpassword" id="rpassword" class="form-control" placeholder="reenter password....."   #password="ngModel" ngModel  required>
+    <div *ngIf="password.touched && password.invalid">
+        <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+    </div>
+</div>
+
+<div class="form-group">
+    <button type="submit" [disabled]="form.invalid" class="btn-outline-success float-right">Add User</button>
+</div>
+
+
+</form>

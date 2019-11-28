@@ -1,0 +1,10 @@
+package com.ustglobal.contactfileapp.dto;
+
+import com.ustglobal.contactfileapp.dao.ContactFileJdbcImpl;
+
+public class ContactManager {
+	public static ContactFileJdbcImpl getContactFileImpl() {
+		return new ContactFileJdbcImpl();
+	}
+
+}

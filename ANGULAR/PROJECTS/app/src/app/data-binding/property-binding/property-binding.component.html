@@ -1,0 +1,28 @@
+<p>property-binding works!</p>
+<h1 [innerText]="name"></h1>
+<img [src]="imgurl" [class.rounded-circle]="isactive"/>
+<h1 [style.color]='colorname'  [class.bg-dark]="isactive"   [class.bg-primary]="!isactive">{{address}}</h1>
+
+<table class="table table-dark table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>age</th>
+            <th [attr.colspan]=colspanvalue></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ram</td>
+            <td>12</td>
+            <td>7384834094343</td>
+            <td>74874739843</td>
+        </tr>
+        <tr>
+            <td>rerwre</td>
+            <td>22</td>
+            <td>6747763463</td>
+            <td>78437887349</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="text-center  col-md-5 offset-4 mt-5">
+            <select class="col-md-5 text-center" (click)="selectedCategory($event)">
+                    <option value="" selected disabled>---select category-----</option>
+                <option value="general">GENERAL</option>
+                <option value="entertainment">ENTERTAINMENT</option>
+                <option value="business">BUSINESS</option>
+                <option value="health">HEALTH</option>
+                <option value="science">SCIENCE</option>
+                <option value="sports">SPORTS</option>
+                <option value="technology">TECHNOLOGY</option>
+            </select>
+        </div>
+    
+     </div>
+    </div>
+   <div class="col-md-12 mt-5">
+    <div class="row">
+    <div class="col-md-10 offset-1">
+        <div class="card card-body"  *ngFor="let cn of ctry">
+    
+                <img src="{{cn.urlToImage}}" alt="">
+                <h2>{{cn.title}}</h2>
+         </div>
+     </div>
+    
+    
+    </div>
+    </div>

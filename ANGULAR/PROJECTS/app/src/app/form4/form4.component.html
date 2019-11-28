@@ -1,0 +1,53 @@
+<p>form4 works!</p>
+<p>form3 works!</p>
+<p>form2 works!</p>
+<form action="" class="col-md-4 offset-4 mt-5 card card-body" #form='ngForm' (ngSubmit)="addProduct(form)">
+    <h1 class="text-center bg-dark text-white">Product</h1>
+
+<div class="form-group" >
+    <input type="text" name="pname" id="pname" class="form-control" placeholder="product name....."   #pname="ngModel" ngModel  required>
+    <div *ngIf="pname.touched && pname.invalid">
+        <p class="alert alert-danger" *ngIf="pname.error.required">this field is required</p>
+    </div>
+</div>
+
+
+<div class="form-group" >
+    <input type="text" name="price" id="price" class="form-control" placeholder="product price...."   #price="ngModel" ngModel  required>
+    <div *ngIf="price.touched && price.invalid">
+        <p class="alert alert-danger" *ngIf="price.error.required">this field is required</p>
+    </div>
+</div>
+
+
+
+<div class="form-group" >
+        <textarea class="form-control" name="desc" id="desc" #desc="ngModel" ngModel required placeholder="description"></textarea>
+
+      
+    <div *ngIf="desc.touched && desc.invalid">
+        <p class="alert alert-danger" *ngIf="desc.error.required">this field is required</p>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="form-group" >
+    <input type="text" name="imgurl" id="cno" class="form-control" placeholder="product image url..."   #imgurl="ngModel" ngModel  required>
+    <div *ngIf="imgurl.touched && imgurl.invalid">
+        <p class="alert alert-danger" *ngIf="imgurl.error.required">this field is required</p>
+    </div>
+</div>
+
+
+
+
+<div class="form-group">
+    <button type="submit" [disabled]="form.invalid" class="btn-outline-success float-right">Add Product</button>
+</div>
+
+
+</form>

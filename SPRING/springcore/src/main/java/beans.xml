@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<bean id="hello" class="com.ustglobal.springcore.di.Hello" init-method="init" destroy-method="destroy">
+	<property name="msg" value="i Love You"></property>
+	<property name="map">
+	<map>
+	<entry key="one" value="1"/>
+	<entry key="two" value="2"/>
+	<entry key="three" value="3"/>
+	<entry key="four" value="4"/>
+	<entry key="five" value="5"/>
+	<entry key="six" value="6"/>
+	<entry key="seven" value="7"/>
+	</map>
+	</property>
+     </bean>
+     <bean id="dog" class="com.ustglobal.springcore.di.Dog" primary="true"/>
+     <bean id="human" class="com.ustglobal.springcore.di.Human" />
+     <bean id="pet" class="com.ustglobal.springcore.di.Pet" autowire="byType">
+       <property name="name" value="rajan"></property>
+     <!--  <property name="animal" ref="animal"></property>  -->
+   <!--   <constructor-arg name="name" value="rajan"></constructor-arg> -->
+    <!--  <constructor-arg name="animal" ref="animal"></constructor-arg>  -->
+     
+     </bean>
+     <bean id="animal" class="com.ustglobal.springcore.di.Cat"></bean>
+     
+     <bean id="beanPostprocesser" class="com.ustglobal.springcore.di.BeanPostProcesserClass"></bean>
+     <bean id="beanfactorypostprocesser"   class="com.ustglobal.springcore.di.BeanFactoryPostProcesserClass"></bean>
+	
+</beans> 

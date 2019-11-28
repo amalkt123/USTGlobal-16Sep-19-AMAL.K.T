@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<bean id="book" class="com.ustglobal.springcore.di.Book" autowire="byType">
+	<property name="name" value="java"></property>
+	<property name="price" value="500"></property></bean>   
+	<bean id="author" class="com.ustglobal.springcore.di.Author">
+	<property name="name" value="balaguru swami"></property>
+	<property name="penName" value="balan"></property>
+	</bean>  
+     <bean id="beanPostprocesser" class="com.ustglobal.springcore.di.BeanPostProcesserClass"></bean>
+     <bean id="beanfactorypostprocesser"   class="com.ustglobal.springcore.di.BeanFactoryPostProcesserClass"></bean>
+	
+</beans> 

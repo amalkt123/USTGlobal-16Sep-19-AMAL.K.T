@@ -1,0 +1,8 @@
+package com.ustglobal.contactfileapp.dto;
+
+public class ContactManager {
+	static ContactFileJbdcImpl getContactImpl() {
+		
+	}
+
+}
