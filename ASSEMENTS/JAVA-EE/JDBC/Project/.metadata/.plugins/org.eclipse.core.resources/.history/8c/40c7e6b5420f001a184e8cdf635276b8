@@ -1,5 +1,0 @@
-package com.ustglobal.contactfileapp.dao;
-
-public class ContactFileJdbcImpl {
-
-}

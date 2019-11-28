@@ -1,6 +1,0 @@
-package com.ustglobal.contactfileapp.dto;
-
-public class ContactBean {
-	private String name;
-
-}
