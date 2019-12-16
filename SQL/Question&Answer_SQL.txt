@@ -1,0 +1,1453 @@
+
+
+
+
+Data Definition Language()
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| account            |            |
+| mysql              |
+| temple             |
+| ust_global         |
++--------------------+
+12 rows in set (0.17 sec)
+
+mysql> use ust_global;
+Database changed
+mysql> create table product(pid int, pname varchar(30), quantity int);
+Query OK, 0 rows affected (0.40 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_ust_global |
++----------------------+
+| product              |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> desc product;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| pid      | int(11)     | YES  |     | NULL    |       |
+| pname    | varchar(30) | YES  |     | NULL    |       |
+| quantity | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.09 sec)
+
+mysql> drop table product;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql>
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| account            |
+| bestlaravel2018    |
+| event              |
+| laravel_test       |
+| mysql              |
+| nhca_project       |
+| performance_schema |
+| school             |
+| temple             |
+| test_cms           |
+| ust_global         |
++--------------------+
+12 rows in set (0.00 sec)
+
+mysql> drop database ust_global;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| account            |
+| bestlaravel2018    |
+| event              |
+| laravel_test       |
+| mysql              |
+| nhca_project       |
+| performance_schema |
+| school             |
+| temple             |
+| test_cms           |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> create database ust_db;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| account            |
+| bestlaravel2018    |
+| event              |
+| laravel_test       |
+| mysql              |
+| nhca_project       |
+| performance_schema |
+| school             |
+| temple             |
+| test_cms           |
+| ust_db             |
++--------------------+
+12 rows in set (0.00 sec)
+mysql> use ust_db;
+Database changed
+mysql> create table product(pid int,pname varchar(30),quantity int, primary key(pid));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_ust_db |
++------------------+
+| product          |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> desc product;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| pid      | int(11)     | NO   | PRI | 0       |       |
+| pname    | varchar(30) | YES  |     | NULL    |       |
+| quantity | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table product add column price double;
+Query OK, 0 rows affected (0.31 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc product;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| pid      | int(11)     | NO   | PRI | 0       |       |
+| pname    | varchar(30) | YES  |     | NULL    |       |
+| quantity | int(11)     | YES  |     | NULL    |       |
+| price    | double      | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> alter table product
+    -> change column price cost int;
+Query OK, 0 rows affected (0.40 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table product
+    -> drop column cost;
+Query OK, 0 rows affected (0.40 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> rename table product to product_info;
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_ust_db |
++------------------+
+| product_info     |
++------------------+
+1 row in set (0.00 sec)
+
+
+
+
+Data Manipution Language(DML)
+
+mysql>
+mysql> desc product_info;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| pid      | int(11)     | NO   | PRI | 0       |       |
+| pname    | varchar(30) | YES  |     | NULL    |       |
+| quantity | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into product_info(pid,pname,quantity) values(1,"laptop",2);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from product_info;
++-----+--------+----------+
+| pid | pname  | quantity |
++-----+--------+----------+
+|   1 | laptop |        2 |
++-----+--------+----------+
+1 row in set (0.05 sec)
+
+mysql> insert into product_info values(2,"desktop",2);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from product_info;
++-----+---------+----------+
+| pid | pname   | quantity |
++-----+---------+----------+
+|   1 | laptop  |        2 |
+|   2 | desktop |        2 |
++-----+---------+----------+
+2 rows in set (0.00 sec)
+
+mysql> insert into product_info(pid,pname) values(3,"mobile");
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from product_info;
++-----+---------+----------+
+| pid | pname   | quantity |
++-----+---------+----------+
+|   1 | laptop  |        2 |
+|   2 | desktop |        2 |
+|   3 | mobile  |     NULL |
++-----+---------+----------+
+3 rows in set (0.00 sec)
+
+mysql> insert into product_info values(4,"bike",2),(5,'cycle',4),(6,'pen',25);
+Query OK, 3 rows affected (0.08 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from product_info;
++-----+---------+----------+
+| pid | pname   | quantity |
++-----+---------+----------+
+|   1 | laptop  |        2 |
+|   2 | desktop |        2 |
+|   3 | mobile  |     NULL |
+|   4 | bike    |        2 |
+|   5 | cycle   |        4 |
+|   6 | pen     |       25 |
++-----+---------+----------+
+6 rows in set (0.00 sec)
+
+mysql>
+
+ create table emp(
+     eid int,
+     name varchar(50) not null,
+     mobile int unique,
+     dob date not null,
+     age int,
+     doj date,
+     blood_group varchar(10),
+     dept_no int,
+     salary int,
+     email varchar(70),
+     gender varchar(10),
+     primary key(eid)
+     );
+
+
+
+mysql> desc emp;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| eid         | int(11)     | NO   | PRI | 0       |       |
+| name        | varchar(50) | NO   |     | NULL    |       |
+| mob         | bigint(20)  | YES  | UNI | NULL    |       |
+| dob         | date        | NO   |     | NULL    |       |
+| age         | int(11)     | YES  |     | NULL    |       |
+| doj         | date        | YES  |     | NULL    |       |
+| blood_group | varchar(10) | YES  |     | NULL    |       |
+| dept_no     | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
+| email       | varchar(70) | YES  |     | NULL    |       |
+| gender      | varchar(10) | YES  |     | NULL    |       |
+| designatio  | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+12 rows in set (0.01 sec)
+
+
+insert into emp values(101,'john',8904641862,'1990-02-21',30,'2016-02-12','B+',10,20000,'john@gmail.com','male','developer');
+
+insert into emp values(102,'Ram',8904641832,'1991-02-21',29,'2017-02-12','A+',20,12000,'ram@gmail.com','male','clerk');
+insert into emp values(103,'Kumar',8904641843,'1989-02-21',31,'2013-02-12','O+',30,22000,'kumar@gmail.com','male','Tech support');
+insert into emp values(104,'Madhu',8904641854,'1987-02-21',33,'2014-02-12','AB+',40,55000,'madhu@gmail.com','male','manager');
+insert into emp values(105,'raju',8904641865,'1992-02-21',27,'2017-02-12','O-',50,23000,'raju@gmail.com','male','tester');
+insert into emp values(106,'roshani',8904665862,'1993-02-21',26,'2015-02-12','O+',10,65000,'roshani@gmail.com','Female','manager');
+insert into emp values(107,'sham',8904641876,'1996-02-21',23,'2013-02-12','B+',30,32000,'sham@gmail.com','male','developer');
+insert into emp values(108,'vinushree',8908741862,'1994-02-21',25,'2014-02-12','B+',50,78000,'vinushree@gmail.com','Female','developer');
+insert into emp values(109,'vinod',8904641782,'1996-02-21',23,'2013-02-12','B+',20,58000,'vinod@gmail.com','male','Soft developer');
+insert into emp values(110,'suman',8904641982,'1990-02-13',30,'2012-02-12','B-',10,36000,'suman@gmail.com','male','HR');
+insert into emp values(111,'harshath',8904561862,'1990-02-22',30,'2018-02-12','AB-',30,65000,'harshath@gmail.com','male','developer');
+insert into emp values(112,'manju',8904641872,'1996-02-21',23,'2018-02-12','AB+',40,23000,'manju@gmail.com','male','Developer');
+
+
+
+
+mysql>
+mysql> insert into emp values(101,'john',8904641862,'1990-02-21',30,'2016-02-12','B+',10,20000,'john@gmail.com','male','developer');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from emp;
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+| eid | name | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email          | gender | designatio |
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+| 101 | john | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com | male   | developer  |
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> insert into emp values(102,'Ram',8904641832,'1991-02-21',29,'2017-02-12','A+',20,12000,'ram@gmail.com','male','clerk');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into emp values(103,'Kumar',8904641843,'1989-02-21',31,'2013-02-12','O+',30,22000,'kumar@gmail.com','male','Tech support');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into emp values(104,'Madhu',8904641854,'1987-02-21',33,'2014-02-12','AB+',40,55000,'madhu@gmail.com','male','manager');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into emp values(105,'raju',8904641865,'1992-02-21',27,'2017-02-12','O-',50,23000,'raju@gmail.com','male','tester');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into emp values(106,'roshani',8904665862,'1993-02-21',26,'2015-02-12','O+',10,65000,'roshani@gmail.com','Female','manager');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into emp values(107,'sham',8904641876,'1996-02-21',23,'2013-02-12','B+',30,32000,'sham@gmail.com','male','developer');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into emp values(108,'vinushree',8908741862,'1994-02-21',25,'2014-02-12','B+',50,78000,'vinushree@gmail.com','Female','developer');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into emp values(109,'vinod',8904641782,'1996-02-21',23,'2013-02-12','B+',20,58000,'vinod@gmail.com','male','Soft developer');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into emp values(110,'suman',8904641982,'1990-02-13',30,'2012-02-12','B-',10,36000,'suman@gmail.com','male','HR');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into emp values(111,'harshath',8904561862,'1990-02-22',30,'2018-02-12','AB-',30,65000,'harshath@gmail.com','male','developer');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into emp values(112,'manju',8904641872,'1990-02-30',30,'2018-02-12','AB+',40,23000,'manju@gmail.com','male','Developer');
+ERROR 1292 (22007): Incorrect date value: '1990-02-30' for column 'dob' at row 1
+mysql> select * from emp;
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer      |
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support   |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 105 | raju      | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com      | male   | tester         |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR             |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+11 rows in set (0.00 sec)
+
+mysql> insert into emp values(112,'manju',8904641872,'1996-02-21',23,'2018-02-12','AB+',40,23000,'manju@gmail.com','male','Developer');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from emp;
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer      |
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support   |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 105 | raju      | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com      | male   | tester         |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR             |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+12 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> insert into values(1,"mobile",10),(5,"laptop",20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(1,"mobile",10),(5,"laptop",20)' at line 1
+mysql> insert into product_info  values(1,"mobile",10),(5,"laptop",20);
+Query OK, 2 rows affected (0.08 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> update product_info set quantity=30 where pid=1;
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> delete product_info where pid=5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where pid=5' at line 1
+mysql> select * from product_info;
++-----+--------+----------+
+| pid | pname  | quantity |
++-----+--------+----------+
+|   1 | mobile |       30 |
+|   5 | laptop |       20 |
++-----+--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> delete product_info where pid=5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where pid=5' at line 1
+mysql> delete from product_info where pid=5;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from product_info;
++-----+--------+----------+
+| pid | pname  | quantity |
++-----+--------+----------+
+|   1 | mobile |       30 |
++-----+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where eid=1;
+Empty set (0.00 sec)
+
+mysql> select * from emp where eid=101;
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+| eid | name | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email          | gender | designatio |
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+| 101 | john | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com | male   | developer  |
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+
+
+mysql> select distrinct(designation) from emp;
+ERROR 1305 (42000): FUNCTION ust_db.distrinct does not exist
+mysql> select distinct(designation) from emp;
+ERROR 1054 (42S22): Unknown column 'designation' in 'field list'
+mysql> select distinct(designatio) from emp;
++----------------+
+| designatio     |
++----------------+
+| developer      |
+| clerk          |
+| Tech support   |
+| manager        |
+| tester         |
+| Soft developer |
+| HR             |
++----------------+
+7 rows in set (0.05 sec)
+
+mysql> select distinct(designatio),deptno from emp;
+ERROR 1054 (42S22): Unknown column 'deptno' in 'field list'
+mysql> select distinct(designatio),dept_no from emp;
++----------------+---------+
+| designatio     | dept_no |
++----------------+---------+
+| developer      |      10 |
+| clerk          |      20 |
+| Tech support   |      30 |
+| manager        |      40 |
+| tester         |      50 |
+| manager        |      10 |
+| developer      |      30 |
+| developer      |      50 |
+| Soft developer |      20 |
+| HR             |      10 |
+| Developer      |      40 |
++----------------+---------+
+11 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> desc product_info;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| pid      | int(11)     | NO   | PRI | 0       |       |
+| pname    | varchar(30) | YES  |     | NULL    |       |
+| quantity | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into values(1,"mobile",10),(5,"laptop",20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(1,"mobile",10),(5,"laptop",20)' at line 1
+mysql> insert into product_info  values(1,"mobile",10),(5,"laptop",20);
+Query OK, 2 rows affected (0.08 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> update product_info set quantity=30 where pid=1;
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> delete product_info where pid=5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where pid=5' at line 1
+mysql> select * from product_info;
++-----+--------+----------+
+| pid | pname  | quantity |
++-----+--------+----------+
+|   1 | mobile |       30 |
+|   5 | laptop |       20 |
++-----+--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> delete product_info where pid=5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where pid=5' at line 1
+mysql> delete from product_info where pid=5;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from product_info;
++-----+--------+----------+
+| pid | pname  | quantity |
++-----+--------+----------+
+|   1 | mobile |       30 |
++-----+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where eid=1;
+Empty set (0.00 sec)
+
+mysql> select * from emp where eid=101;
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+| eid | name | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email          | gender | designatio |
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+| 101 | john | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com | male   | developer  |
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where salary=(salary+5000);
+Empty set (0.06 sec)
+
+mysql> select salary+5000 from emp;
++-------------+
+| salary+5000 |
++-------------+
+|       25000 |
+|       17000 |
+|       27000 |
+|       60000 |
+|       28000 |
+|       70000 |
+|       37000 |
+|       83000 |
+|       63000 |
+|       41000 |
+|       70000 |
+|       28000 |
++-------------+
+12 rows in set (0.00 sec)
+
+mysql> select salary+5000 incrementedsal from emp;
++----------------+
+| incrementedsal |
++----------------+
+|          25000 |
+|          17000 |
+|          27000 |
+|          60000 |
+|          28000 |
+|          70000 |
+|          37000 |
+|          83000 |
+|          63000 |
+|          41000 |
+|          70000 |
+|          28000 |
++----------------+
+12 rows in set (0.00 sec)
+
+mysql> select salary-5000 decremetedsal from emp;
++---------------+
+| decremetedsal |
++---------------+
+|         15000 |
+|          7000 |
+|         17000 |
+|         50000 |
+|         18000 |
+|         60000 |
+|         27000 |
+|         73000 |
+|         53000 |
+|         31000 |
+|         60000 |
+|         18000 |
++---------------+
+12 rows in set (0.03 sec)
+
+
+mysql> select salary*12 annual_sal from emp;
++------------+
+| annual_sal |
++------------+
+|     240000 |
+|     144000 |
+|     264000 |
+|     660000 |
+|     276000 |
+|     780000 |
+|     384000 |
+|     936000 |
+|     696000 |
+|     432000 |
+|     780000 |
+|     276000 |
++------------+
+12 rows in set (0.00 sec)
+
+mysql> select salary/30 day_sal from emp;
++-----------+
+| day_sal   |
++-----------+
+|  666.6667 |
+|  400.0000 |
+|  733.3333 |
+| 1833.3333 |
+|  766.6667 |
+| 2166.6667 |
+| 1066.6667 |
+| 2600.0000 |
+| 1933.3333 |
+| 1200.0000 |
+| 2166.6667 |
+|  766.6667 |
++-----------+
+12 rows in set (0.04 sec)
+
+mysql>
+
+
+
+mysql> select * from emp where designatio='Soft developer';
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+----------------+
+| eid | name  | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email           | gender | designatio     |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+----------------+
+| 109 | vinod | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com | male   | Soft developer |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where dept!=20;
+ERROR 1054 (42S22): Unknown column 'dept' in 'where clause'
+mysql> select * from emp where dept_no!=20;
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+--------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio   |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+--------------+
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer    |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager      |
+| 105 | raju      | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com      | male   | tester       |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager      |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer    |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer    |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR           |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer    |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer    |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from emp where salary>50000;
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where age<30;
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
+| 105 | raju      | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com      | male   | tester         |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> select name,salary,email,mob from emp where age>28;
++----------+--------+--------------------+------------+
+| name     | salary | email              | mob        |
++----------+--------+--------------------+------------+
+| john     |  20000 | john@gmail.com     | 8904641862 |
+| Ram      |  12000 | ram@gmail.com      | 8904641832 |
+| Kumar    |  22000 | kumar@gmail.com    | 8904641843 |
+| Madhu    |  55000 | madhu@gmail.com    | 8904641854 |
+| suman    |  36000 | suman@gmail.com    | 8904641982 |
+| harshath |  65000 | harshath@gmail.com | 8904561862 |
++----------+--------+--------------------+------------+
+6 rows in set (0.00 sec)
+
+mysql>
+
+
+
+
+mysql> select * from emp where dept_no=20 and salary>25000;
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+----------------+
+| eid | name  | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email           | gender | designatio     |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+----------------+
+| 109 | vinod | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com | male   | Soft developer |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+----------------+
+1 row in set (0.11 sec)
+
+mysql> desc emp;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| eid         | int(11)     | NO   | PRI | 0       |       |
+| name        | varchar(50) | NO   |     | NULL    |       |
+| mob         | bigint(20)  | YES  | UNI | NULL    |       |
+| dob         | date        | NO   |     | NULL    |       |
+| age         | int(11)     | YES  |     | NULL    |       |
+| doj         | date        | YES  |     | NULL    |       |
+| blood_group | varchar(10) | YES  |     | NULL    |       |
+| dept_no     | int(11)     | YES  |     | NULL    |       |
+| salary      | int(11)     | YES  |     | NULL    |       |
+| email       | varchar(70) | YES  |     | NULL    |       |
+| gender      | varchar(10) | YES  |     | NULL    |       |
+| designatio  | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where dept_no=20 and dept_no=10;
+Empty set (0.00 sec)
+
+mysql> select name,salary from emp where dept_no=20 orept_no=10;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'orept_no=10' at line 1
+mysql> select name,salary from emp where dept_no=20 dept_no=10;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dept_no=10' at line 1
+mysql> select name,salary from emp where dept_no=20 or dept_no=10;
++---------+--------+
+| name    | salary |
++---------+--------+
+| john    |  20000 |
+| Ram     |  12000 |
+| roshani |  65000 |
+| vinod   |  58000 |
+| suman   |  36000 |
++---------+--------+
+5 rows in set (0.05 sec)
+
+mysql> select name,salary from emp where designatio=tester and age=25;
+ERROR 1054 (42S22): Unknown column 'tester' in 'where clause'
+mysql> select name,salary from emp where designatio='tester' and age=25;
+Empty set (0.00 sec)
+
+mysql> select name,salary from emp where designatio='tester' and age=27;
++------+--------+
+| name | salary |
++------+--------+
+| raju |  23000 |
++------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where designatio='tester' and age=27;
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+| eid | name | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email          | gender | designatio |
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+| 105 | raju | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com | male   | tester     |
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where designatio='tester' or salary>40000;
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 105 | raju      | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com      | male   | tester         |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select name,salary,age from emp where dept_no=10 or dept_no=40 or dept_no=50;
++-----------+--------+------+
+| name      | salary | age  |
++-----------+--------+------+
+| john      |  20000 |   30 |
+| Madhu     |  55000 |   33 |
+| raju      |  23000 |   27 |
+| roshani   |  65000 |   26 |
+| vinushree |  78000 |   25 |
+| suman     |  36000 |   30 |
+| manju     |  23000 |   23 |
++-----------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> select name,salary,age from emp where dept_no=10 or dept_no=40 or dept_no=70;
++---------+--------+------+
+| name    | salary | age  |
++---------+--------+------+
+| john    |  20000 |   30 |
+| Madhu   |  55000 |   33 |
+| roshani |  65000 |   26 |
+| suman   |  36000 |   30 |
+| manju   |  23000 |   23 |
++---------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where age>25 or blood_group='B+';
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer      |
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support   |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 105 | raju      | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com      | male   | tester         |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR             |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+11 rows in set (0.00 sec)
+
+mysql>
+mysql> select * from emp where not designitio='tester';
+ERROR 1054 (42S22): Unknown column 'designitio' in 'where clause'
+mysql> select * from emp where not designatio='tester';
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer      |
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support   |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR             |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+11 rows in set (0.00 sec)
+
+mysql> select * from emp where designatio!='tester';
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer      |
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support   |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR             |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+11 rows in set (0.00 sec)
+
+mysql> select * from emp where designatio<>'tester';
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer      |
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support   |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR             |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+11 rows in set (0.00 sec)
+
+mysql> select * from emp where (designatio='HR' or designatio='tester') and salary>40000;
+Empty set (0.00 sec)
+
+mysql> select * from emp where (designatio='HR' or designatio='tester') and salary>20000;
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+------------+
+| eid | name  | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email           | gender | designatio |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+------------+
+| 105 | raju  | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com  | male   | tester     |
+| 110 | suman | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com | male   | HR         |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select name from emp where (designatio='HR' or designatio='tester') and salary>20000;
++-------+
+| name  |
++-------+
+| raju  |
+| suman |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where (not designatio='Soft developer') and dept=40;
+ERROR 1054 (42S22): Unknown column 'dept' in 'where clause'
+mysql> select * from emp where (not designatio='Soft developer') and dept_no=40;
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+------------+
+| eid | name  | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email           | gender | designatio |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+------------+
+| 104 | Madhu | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com | male   | manager    |
+| 112 | manju | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com | male   | Developer  |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where (not designatio='Soft developer'and dept_no=40);
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+------------+
+| eid | name  | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email           | gender | designatio |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+------------+
+| 104 | Madhu | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com | male   | manager    |
+| 112 | manju | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com | male   | Developer  |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where (designatio='Soft developer'and (dept_no=10 or dept_no=40));
+Empty set (0.00 sec)
+
+mysql> select * from emp where designatio='Soft developer'and (dept_no=10 or dept_no=40);
+Empty set (0.00 sec)
+
+mysql> select * from emp where designatio='Soft developer'and (dept_no=10 or dept_no=20);
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+----------------+
+| eid | name  | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email           | gender | designatio     |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+----------------+
+| 109 | vinod | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com | male   | Soft developer |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+----------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+
+
+mysql>
+mysql> select * from emp where dept_no in (40,50,60,70,80);
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+------------+
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager    |
+| 105 | raju      | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com      | male   | tester     |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer  |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer  |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+------------+
+4 rows in set (0.06 sec)
+
+mysql> select name from emp where designatio in ('tester','HR','admin');
++-------+
+| name  |
++-------+
+| raju  |
+| suman |
++-------+
+2 rows in set (0.05 sec)
+
+mysql> select name from emp where (designatio in ('tester','Soft developer','admin')) and (dept_no in (10,20) and salary>40000);
++-------+
+| name  |
++-------+
+| vinod |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where designatio not in ('tester','HR','admin');
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer      |
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support   |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+10 rows in set (0.05 sec)
+
+mysql> select * from emp where designatio not in ('tester','Soft developer') and age in (20,25,30,40) ;
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+------------+
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer  |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer  |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR         |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer  |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where age between 22 and 40;
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer      |
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support   |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 105 | raju      | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com      | male   | tester         |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR             |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+12 rows in set (0.08 sec)
+
+mysql> select * from emp where doj '2017-01-01' and '2017-12-30';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2017-01-01' and '2017-12-30'' at line 1
+mysql> select * from emp where doj '2017-01-01' and '2017-12-31';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2017-01-01' and '2017-12-31'' at line 1
+mysql> select * from emp where doj between '2017-01-01' and '2017-12-31';
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+| eid | name | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email          | gender | designatio |
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+| 102 | Ram  | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com  | male   | clerk      |
+| 105 | raju | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com | male   | tester     |
++-----+------+------------+------------+------+------------+-------------+---------+--------+----------------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where not (salary between 25000 and 30000);
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer      |
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support   |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 105 | raju      | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com      | male   | tester         |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR             |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where (salary not between 25000 and 30000);
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer      |
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support   |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 105 | raju      | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com      | male   | tester         |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR             |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+12 rows in set (0.00 sec)
+
+mysql>
+
+Like Operator
+
+select *from table_name where col_name like (_/%);
+
+
+mysql> select * from emp where name like (v%)
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select * from emp where name like (v%);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select * from emp where name like v%;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%' at line 1
+mysql> select * from emp where name like 'v%';
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+2 rows in set (0.05 sec)
+
+mysql> select * from emp where name like '%v';
+Empty set (0.00 sec)
+
+mysql> select * from emp where name like 'R%';
++-----+---------+------------+------------+------+------------+-------------+---------+--------+-------------------+--------+------------+
+| eid | name    | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email             | gender | designatio |
++-----+---------+------------+------------+------+------------+-------------+---------+--------+-------------------+--------+------------+
+| 102 | Ram     | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com     | male   | clerk      |
+| 105 | raju    | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com    | male   | tester     |
+| 106 | roshani | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com | Female | manager    |
++-----+---------+------------+------------+------+------------+-------------+---------+--------+-------------------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql>
+
+write query to display all employee whose name starts with a
+
+mysql> select * from emp where name like 'a%';
+Empty set (0.00 sec)
+
+mysql> select * from emp where name like 'A%';
+Empty set (0.00 sec)
+
+
+
+
+write query to display all employee whose second character is i
+
+mysql> select * from emp where name like '_i%';
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+2 rows in set (0.00 sec)
+write query to display name of the employee which has 2 ll in the name
+
+mysql> select * from emp where name like '%l%l%';
+Empty set (0.00 sec)
+
+write query to display name of the employee whose name is strarts with and ends with p
+
+
+mysql> select * from emp where name like 's%p';
+Empty set (0.00 sec)
+
+write query to display all the record of the employee if the name begin with a or s
+
+mysql> select * from emp where name like 's%' or name like 'a%';
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+------------+
+| eid | name  | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email           | gender | designatio |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+------------+
+| 107 | sham  | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com  | male   | developer  |
+| 110 | suman | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com | male   | HR         |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+------------+
+2 rows in set (0.00 sec)
+
+
+write query to display name,sal whose working in dept 10,20,30 and job designation44 starts with s
+
+mysql> select name,salary
+    -> from emp
+    -> where dept_no in(10,20,30) and designatio like 'S%';
++-------+--------+
+| name  | salary |
++-------+--------+
+| vinod |  58000 |
++-------+--------+
+1 row in set (0.00 sec) 
+
+
+
+
+
+
+
+
+
+
+
+
+mysql> select * from emp where salary>=40000;
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+5 rows in set (0.00 sec)
+
+
+ write query using aggregate function
+
+
+mysql> select count(*) from emp;
++----------+
+| count(*) |
++----------+
+|       12 |
++----------+
+1 row in set (0.02 sec)
+
+mysql> select avg(salary) from emp;
++-------------+
+| avg(salary) |
++-------------+
+|  40750.0000 |
++-------------+
+1 row in set (0.05 sec)
+
+mysql> select max(salary) from emp;
++-------------+
+| max(salary) |
++-------------+
+|       78000 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> select min(salary) from emp;
++-------------+
+| min(salary) |
++-------------+
+|       12000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> select sum(salary) from emp;
++-------------+
+| sum(salary) |
++-------------+
+|      489000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+
+
+
+
+mysql> commit;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from emp oder by salary;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by salary' at line 1
+mysql> select * from emp order by salary;
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer      |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support   |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer      |
+| 105 | raju      | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com      | male   | tester         |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR             |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+12 rows in set (0.05 sec)
+
+mysql> select * from emp order by salary desc;
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| eid | name      | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email               | gender | designatio     |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+| 108 | vinushree | 8908741862 | 1994-02-21 |   25 | 2014-02-12 | B+          |      50 |  78000 | vinushree@gmail.com | Female | developer      |
+| 111 | harshath  | 8904561862 | 1990-02-22 |   30 | 2018-02-12 | AB-         |      30 |  65000 | harshath@gmail.com  | male   | developer      |
+| 106 | roshani   | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com   | Female | manager        |
+| 109 | vinod     | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com     | male   | Soft developer |
+| 104 | Madhu     | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com     | male   | manager        |
+| 110 | suman     | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com     | male   | HR             |
+| 107 | sham      | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com      | male   | developer      |
+| 112 | manju     | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com     | male   | Developer      |
+| 105 | raju      | 8904641865 | 1992-02-21 |   27 | 2017-02-12 | O-          |      50 |  23000 | raju@gmail.com      | male   | tester         |
+| 103 | Kumar     | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com     | male   | Tech support   |
+| 101 | john      | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com      | male   | developer      |
+| 102 | Ram       | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com       | male   | clerk          |
++-----+-----------+------------+------------+------+------------+-------------+---------+--------+---------------------+--------+----------------+
+12 rows in set (0.00 sec)
+
+
+
+Create Dept Table
+
+
+mysql> use UST_db
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_ust_db |
++------------------+
+| emp              |
+| product_info     |
++------------------+
+2 rows in set (0.00 sec)
+
+mysql> create table dept(
+    -> dept_no int,
+    -> dept_name varchar(30),
+    -> location varchar(30));
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_ust_db |
++------------------+
+| dept             |
+| emp              |
+| product_info     |
++------------------+
+3 rows in set (0.00 sec)
+
+mysql> desc dept;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| dept_no   | int(11)     | YES  |     | NULL    |       |
+| dept_name | varchar(30) | YES  |     | NULL    |       |
+| location  | varchar(30) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql>
+ insert values to Dept
+
+
+
+insert into dept values(10,'admin','bangalore');
+
+insert into dept values(20,'maintainance','bangalore');
+insert into dept values(30,'development','mumbai');
+insert into dept values(40,'development','pune');
+insert into dept values(50,'mainatainance','bangalore');
+
+
+
+WAQ to display all the record of the employee Whose date of joining is same is 'vinod'
+
+mysql> select * from emp where doj=(select doj from emp where name='vinod');
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+----------------+
+| eid | name  | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email           | gender | designatio     |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+----------------+
+| 103 | Kumar | 8904641843 | 1989-02-21 |   31 | 2013-02-12 | O+          |      30 |  22000 | kumar@gmail.com | male   | Tech support   |
+| 107 | sham  | 8904641876 | 1996-02-21 |   23 | 2013-02-12 | B+          |      30 |  32000 | sham@gmail.com  | male   | developer      |
+| 109 | vinod | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com | male   | Soft developer |
++-----+-------+------------+------------+------+------------+-------------+---------+--------+-----------------+--------+----------------+
+3 rows in set (0.06 sec)
+
+mysql>
+WAQ to display the second maximum salary
+
+
+mysql> select max(salary) from emp where salary<(select max(salary) from emp);
++-------------+
+| max(salary) |
++-------------+
+|       65000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+WAQ to display name of the employee who is working in location which has atleast A in the location;
+
+
+mysql>
+mysql> select name from emp where dept_no in (select dept_no from dept where location like '%a%');
++-----------+
+| name      |
++-----------+
+| john      |
+| Ram       |
+| Kumar     |
+| raju      |
+| roshani   |
+| sham      |
+| vinushree |
+| vinod     |
+| suman     |
+| harshath  |
++-----------+
+10 rows in set (0.07 sec)
+
+mysql>
+
+WAQ to display all the record of the emp whose working in admin ,opration developer
+
+
+1
+mysql> select * from emp where dept_no in (select dept_no from dept where dept_name in ('admin','maintainance','development'));
++-----+---------+------------+------------+------+------------+-------------+---------+--------+-------------------+--------+----------------+
+| eid | name    | mob        | dob        | age  | doj        | blood_group | dept_no | salary | email             | gender | designatio     |
++-----+---------+------------+------------+------+------------+-------------+---------+--------+-------------------+--------+----------------+
+| 101 | john    | 8904641862 | 1990-02-21 |   30 | 2016-02-12 | B+          |      10 |  20000 | john@gmail.com    | male   | developer      |
+| 102 | Ram     | 8904641832 | 1991-02-21 |   29 | 2017-02-12 | A+          |      20 |  12000 | ram@gmail.com     | male   | clerk          |
+| 104 | Madhu   | 8904641854 | 1987-02-21 |   33 | 2014-02-12 | AB+         |      40 |  55000 | madhu@gmail.com   | male   | manager        |
+| 106 | roshani | 8904665862 | 1993-02-21 |   26 | 2015-02-12 | O+          |      10 |  65000 | roshani@gmail.com | Female | manager        |
+| 109 | vinod   | 8904641782 | 1996-02-21 |   23 | 2013-02-12 | B+          |      20 |  58000 | vinod@gmail.com   | male   | Soft developer |
+| 110 | suman   | 8904641982 | 1990-02-13 |   30 | 2012-02-12 | B-          |      10 |  36000 | suman@gmail.com   | male   | HR             |
+| 112 | manju   | 8904641872 | 1996-02-21 |   23 | 2018-02-12 | AB+         |      40 |  23000 | manju@gmail.com   | male   | Developer      |
++-----+---------+------------+------------+------+------------+-------------+---------+--------+-------------------+--------+----------------+
+7 rows in set (0.00 sec)
+
+mysql>
+
+
+
+WAQ to display max salary for each dept
+
+
+
+mysql> select max(salary) from emp group by(dept_no);
++-------------+
+| max(salary) |
++-------------+
+|       65000 |
+|       58000 |
+|       65000 |
+|       55000 |
+|       78000 |
++-------------+
+5 rows in set (0.00 sec)
+
+mysql>
+
+WAQ to display the highest sal given to hr in each dept
+
+mysql> select max(salary) from emp where designatio='HR' group by(dept_no);
++-------------+
+| max(salary) |
++-------------+
+|       36000 |
++-------------+
+1 row in set (0.00 sec)
+
+WAQ to display dept no which atleast 2 employee
+
+
+mysql> select dept_no from emp group by(dept_no) having (count(*)>=2);
++---------+
+| dept_no |
++---------+
+|      10 |
+|      20 |
+|      30 |
+|      40 |
+|      50 |
++---------+
+5 rows in set (0.05 sec)
+
+mysql>
+
+
+
+record from 1st table and mergw 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        form {
+            text-align: center;
+
+        }
+    </style>
+    <script src="/assignment5/assignment5a.js"></script>
+</head>
+
+<body>
+    <form>
+        <label for='name'>UserName</label>
+        <input type="text" class="name" name='name'><br>
+        <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name='pass' />showpassword
+
+        <input type="checkbox" id="check"
+            onchange="document.getElementById('password').type=this.checked?'text':'password'">
+        <div>&nbsp;</div>
+        <button id="b1" disabled="stringLength()">Login</button>
+    </form>
+</body>
+
+</html>

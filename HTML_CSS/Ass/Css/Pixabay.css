@@ -1,0 +1,75 @@
+#div1{
+    width: 1100px;
+    height: 240px;
+    background-image: url("Connected-1920x1200.jpg");
+    background-size: cover;
+}
+.top{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
+    margin-top: 1px;
+    color:white;
+    text-decoration: none;
+}
+.top1{
+    color:white;
+    text-decoration: none;
+}
+.top2{
+    font-size: 200%;
+    color: white;
+    text-decoration: none;
+}
+.top3{
+    color:white;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 1px;
+
+}
+#tag{
+    color: white;
+    font-size: 30px;
+    text-align:center;
+}
+#tag2{
+    color: white;
+    text-align:center;
+}
+#search{
+    width: 550px;
+    height:40px;
+    text-align: center;
+    margin-left: 300px;
+    background: url(/UST/CSS/image/imgsearch2.png) no-repeat 5px white ;
+    text-align: center;
+}
+.mid1{
+    color: white;
+    text-decoration: none;
+    opacity: .8;
+    text-align: center;
+}
+h5{
+    color: white;
+    text-align: center;
+    opacity: .7;
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+}
+.images{
+    height:300px;
+    width:300px;
+    padding: 2px;
+    margin-top: 10px;
+    margin-left: 4px;
+}
+body{
+    background-color: black;
+}
+select{
+    border:none;
+}
+

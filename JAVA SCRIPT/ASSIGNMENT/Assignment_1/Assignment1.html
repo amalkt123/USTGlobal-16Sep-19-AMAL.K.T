@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ass1</title>
+
+</head>
+<body>
+    <script>
+    var ary1 = [1,2,3,4,5,6], ary2 = [1,"abc",3,"bca",4,"cab"], ary3 = ['xyz',2.0,'yzx',4.0,'zxy'], ary4 = [`axc`,`cxa`,2,3,4], ary5 = [7.7,4.4,6.6,5.5]
+    console.log("WITHOUT USEING NEW KEYWORD FOR ARRAY CREATION & OBJECT..:");
+    console.log("ARY1 : ",ary1,"ARY1[0] = ",ary1[0]);
+    console.log("ARY2 : ",ary2 ,"ARY2[1] = ", ary2[1]);
+    console.log("ARY3 : ",ary3 ,"ARY3[2] = ", ary3[2]);
+    console.log("ARY4 : ",ary4 ,"ARY4[3] = ", ary4[3])
+    console.log("ARY5 : ",ary5 ,"ARY5[4] = ", ary5[4])
+
+        var person1 = {
+            Name   : 'Arun',
+            Degree : 'B.E',
+            Age    :  33,
+            Gender :  'Male',
+            getFullName : function(){
+                return this.Name +' '+this.Degree
+            }            
+        }
+        var FullName = person1.getFullName();
+        console.log('FULLNAME = ',FullName);
+        console.log('AGE = ',person1.Age);
+        console.log('GENDER = ',person1.Gender);
+        var person2 = {
+            Name   : 'Madhan',
+            Degree : 'B.COM',
+            Age    : 44,
+            Gender : 'Male',
+            getFullName : function(){
+                return this.Name +' '+this.Degree
+            }    
+        }
+        var FullName = person2.getFullName();
+        console.log('FULLNAME = ',FullName);
+        console.log('AGE = ',person2.Age);
+        console.log('GENDER = ',person2.Gender);
+        var person3 = {
+            Name   : 'Harini', 
+            Degree : 'B.E',
+            Age    : 22,
+            Gender : 'Female',
+            getFullName : function(){
+                return this.Name +' '+this.Degree
+            }    
+        }
+        var FullName = person3.getFullName();
+        console.log('FULLNAME = ',FullName);
+        console.log('AGE = ',person3.Age);
+        console.log('GENDER = ',person3.Gender);
+        var person4 = {
+            Name   : 'Sanjiv', 
+            Degree : 'MBBS',
+            Age    : 33,
+            Gender : 'Male',
+            getFullName : function(){
+                return this.Name +' '+this.Degree
+            }    
+        }
+        var FullName = person4.getFullName();
+        console.log('FULLNAME = ',FullName);
+        console.log('AGE = ',person4.Age);
+        console.log('GENDER = ',person4.Gender);
+        var person5 = {
+            Name   : 'Krishna',
+            Degree : 'BA BL',
+            Age    : 24,
+            Gender : 'Male',
+            getFullName : function(){
+                return this.Name +' '+this.Degree
+            }            
+        }
+        var FullName = person5.getFullName();
+        console.log('FULLNAME = ',FullName);
+        console.log('AGE = ',person5.Age);
+        console.log('GENDER = ',person5.Gender);
+        console.log();
+        console.log("USING LOOPING STATEMENT FOR ARRAY..: ");
+        var ary = ['load again','load again','load again','load again','load again','load again']; 
+        var count = 0;
+        for(var i=0; i<ary.length; i=i+2)
+        {
+        //console.log(ary[i]);
+        alert(ary[i]);
+        }
+        console.log("WITH USING NEW KEYWORD FOR CREATING ARRAY AND OOBJECT..:");
+        var nary1 = new Array(1,2,3,4,5,6);
+        var nary2 = new Array(1,"abc",3,"bca",4,"cab");
+        var nary3 = new Array('xyz',2.0,'yzx',4.0,'zxy');
+        var nary4 = new Array(`axc`,`cxa`,2,3,4);
+        var nary5 = new Array(7.7,4.4,6.6,5.5);
+        console.log('NEWARRAY1 = ',nary1,'NEWARRAY = ',nary1[10]='aaa');
+        nary2[0] = 'aaa';
+        console.log('NAWARRAY2 = ',nary2);
+        console.log('NEWARRAY3 = ',nary3.sort());
+        console.log("NEWARRAY4 = ",typeof nary4);
+    </script>
+
+</body>
+</html>

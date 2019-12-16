@@ -1,0 +1,158 @@
+                           DDL(DATA_DEFINITION_LANGUAGE)
+CREATE
+	->create table tableName;
+DROP
+	->drop table tableName;
+ALTER
+	->alter table tableName add column columnName dataType;
+	->alter table tableName change column oldColumnName newColumnName dataType;
+	->alter table tableName drop column oldColumnName; 
+RENAME
+	->rename table oldTableName to newTableName;
+TRUNCATE
+	->truncate  table tableName;
+
+
+                           DML(DATA_MANIPULATION_LANGUAGE)
+INSERT
+	->insert into tableName(columnName,...N) values(value1....N);
+                               (OR)
+	->insert into tableName values(value1.....N);
+		        (FOR 'N' NO.OF.ROWS)
+	->insert into tableName values(value1....N),(values...N)ect..;
+UPDATE
+	->update tableName set columnName=value;
+DELETE
+	->delete from tableName;
+
+
+			   DQL(DATA_QUERY_LANGUAGE)
+SELECT
+	with the help of SELECT we can perform retieval from the table in the three way
+	->PROJECTION
+		==>select columnName from tableName;
+	->SELECTION
+	->JOINS
+	->DISTINT
+		==>select distinct columnName from tableName;
+		==>select count(distinct columnName) from tableName;
+
+ALIAS
+        ->select columnName as newColumnName from tableName;
+                             (OR)
+        ->select columnName  newColumnName from tableName;          
+WHERE(only for SELECT,UPDATE,DELETE)
+	->select * from tableName where condition;
+
+
+
+                                                         SPECIAL_OPERATORS
+IN(It is used for evaluating multiple values)
+
+	->select * from tableName where  columnName IN(list of values)
+NOT_IN
+
+	->select * from tableName where  columnName NOT IN(list of values)
+BETWEEN(It is used for searching based on range of values)
+
+	->select * from tableName where columnName BETWEEN values1 AND values2
+
+NOT_BETWEEN(It is used for searching based on range of values)
+
+	->select * from tableName where columnName NOT BETWEEN values1 AND values2
+
+IS(It is used to check for null values)
+
+	->select * from tableName where column IS null;
+IS NOT NULL
+
+	->select * from tableName where column IS NOT null;
+LIKE()
+	-> %- matches 0 or 'n' characters
+	->_-matches exactly one characters
+	
+	->select * from tableName where columnName like %or_;
+
+NOT_LIKE()
+
+	->select * from tableName where columnName NOT like %or_;
+                                                      
+                                                              FUNCTION(TWO_TYPES)
+-->SINGLE_ROW (OR) SCALAR FUNCTION
+
+			=>N no.of INPUT/N no.of.OUTPUT
+
+-->MULTI_ROW (OR) AGGREGATE FUNCTION
+			
+			=>N no.of INPUT/ SINGLE OUTPUT
+				-->AVG()
+				-->COUNT()
+				-->MAX()
+				-->MIN()
+				-->SUM()		
+ORDER_BY
+			=>select * from tableName ORDER BY columnName ASC|DESC;
+
+
+SUB-QUERY
+
+			=>select * from tableName where columnNmae Operator (select * from tableName);
+
+
+			==>TYPES OF SUB_QUERY
+				->SINGLE_ROW_SUB_QUERY
+				->MULTI_ROW-SUB_QUERY
+GROUP_BY
+
+			=>select * from tableName GROUP BY columnName;
+HAVING_CLAUSE
+
+			=>select * from tableName where condition GROUP BY columnName Having condition;
+
+ROLLBACK
+
+			=>set autocommit=0; FOR TURE; 
+COMMIT
+
+			=>commit
+			
+SAVEPOINT
+			=>savepoint anyName;
+
+			=>rollback to savepointName;
+
+							JOIN
+
+TYPES OF JOIN 
+	->INNER JOIN
+		->select * from tableName INNER JOIN tableName2 ON condition(NSI)
+					(OR)
+		->select * from tableName1,tableName2 where JOIN CONDITION 
+
+	->CROSS (OR) CARTESIAN JOIN
+		->select * from tableName1 CROSS JOIN tableName2 ON condition
+				(OR)
+		->select * from tableName1,tableName2(ORACAL)
+	->OUTER JOIN 
+
+		===>LEFT OUTER JOIN
+			->select * from tableName1 LEFTOUTERJOIN tableName2 ON condition
+					(OR)
+			->select * from tableName1,tableName2 where tableName1.columnName = tableName2.columnName(+) 
+
+	
+		===>RIGHT OUTER JOIN
+			->select * from tableName1 RIGHTOUTERJOIN tableName2 ON condition
+					(OR)
+			->select * from tableName1,tableName2 where tableName1.columnName(+) = tableName2.columnName
+
+		===>FULL OUTER JOIN
+			->select * from tableName1 FULLOUTERJOIN tableName2 ON condition
+				
+	->SELF JION
+
+		->select * from tableName1 join tableName2 on condition
+					(OR)
+		->select * from tableName1,tableName2 where condition
+	->NATURAL JOIN
+		->select * from tableName1 natural join tableName2
