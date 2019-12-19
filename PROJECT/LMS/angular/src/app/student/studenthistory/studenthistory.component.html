@@ -1,0 +1,115 @@
+
+
+<form  class="col-md-8 offset-2 mt-5 card card-body">
+    <h1 class="text-center bg-dark text-white">Search</h1>
+    
+    <div class="form-group">
+        <input type="text" name="search" id="search" class="form-control" placeholder="enter search....." [(ngModel)]='search' >
+         <!-- <div *ngIf="search.touched && search.invalid">
+               <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+           </div>  -->
+    </div>
+    
+</form>
+<table class="table-borderd table-striped table-dark col-md-8 offset-2">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Book Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Subject</th>
+            <th scope="col">IssueDate</th>
+            <th scope="col">Status</th>
+            <th></th>
+        </tr>
+    </thead>
+        <tbody>
+        <tr *ngFor="let book of books |trackbook:search">
+                <td>{{book.bdid}}</td>
+                <td>{{book.bookBean.id}}</td>
+                <td>{{book.bookBean.name}}</td>
+                <td>{{book.bookBean.subject}}</td>
+                <td>{{book.bookBean.issueDate}}</td>
+                <td>{{book.status}}</td>
+                <td> 
+                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" (click)="selectedBook(book)">
+        View
+      </button>
+      
+      <!-- Modal -->
+      
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  *ngIf="selectedbook">
+        
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">  
+            <div class="modal-header">
+                <div class="alert alert-primary offset-2"  *ngIf="message">
+                    <h6>{{message}}</h6>
+                  </div>
+              <h5 class="modal-title text-center text-dark" id="exampleModalLabel">Book Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+           
+
+            <div class="modal-body text-dark">          
+              <table style="width:100%">
+                <tr>
+                  <th>BOOK ID:</th>
+                  <td>{{selectedbook.bookBean.id}}</td>
+                </tr>
+                <tr>
+                  <th>NAME</th>
+                  <td>{{selectedbook.bookBean.name |uppercase}}</td>
+                </tr>
+                <tr>
+                  <th>SUBJECT</th>
+                  <td>{{selectedbook.bookBean.subject |uppercase}}</td>
+                </tr>
+                <tr>
+                  <th>STATUS</th>
+                  <td>{{selectedbook.status |uppercase}}</td>
+                </tr>
+                <tr>
+                  <th>REQUEST DATE</th>
+                  <td>{{selectedbook.requestDat0e |date}}</td>
+                </tr>
+                <tr *ngIf="selectedbook.issueDate">
+                  <th>ISSUE DATE</th>
+                  <td>{{selectedbook.issueDate |date}}</td>
+                </tr>
+                <tr *ngIf="selectedbook.returnDate">
+                    <th>ISSUE DATE</th>
+                    <td>{{selectedbook.returnDate |date}}</td>
+                  </tr>
+              </table>
+                 
+                     
+                       
+              
+
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary" (click)="bookReturn()" *ngIf="selectedbook.status==='approved'">Return Book</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  
+                    
+                </td>
+              
+               
+            </tr>
+        </tbody>
+   
+</table>
+

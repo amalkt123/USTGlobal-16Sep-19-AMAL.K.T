@@ -1,0 +1,118 @@
+
+
+<form action="" class="col-md-8 offset-2 mt-5 card card-body">
+    <h1 class="text-center bg-dark text-white">Search</h1>
+    
+    <div class="form-group">
+        <input type="text" name="search" id="search" class="form-control" placeholder="enter name...." [(ngModel)]='search' >
+         <!-- <div *ngIf="search.touched && search.invalid">
+               <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+           </div>  -->
+    </div>
+    
+</form>
+<table class="table-borderd table-striped table-dark col-md-8 offset-2">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">COURSE</th>
+            <th scope="col">MOB</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+        <tbody>
+        <tr *ngFor="let student of students|  studentbook:search">
+                <td>{{student.sid}}</td>
+                <td>{{student.name | uppercase}}</td>
+                <td>{{student.course}}</td>
+                <td>{{student.mob}}</td>
+                <td> 
+                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" (click)="selectedStudent(student)">
+        View
+      </button>
+      
+      <!-- Modal -->
+      <form action="" class="" #form='ngForm' (ngSubmit)="makeRequest(form)" *ngIf="selectedstudent">
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Student Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body alert alert-primary">
+            
+
+
+
+
+                    
+                 
+                        <h1 class="text-center  ">Student Details</h1>
+                        <h5>{{message}}</h5>
+                        <div class="form-group" >
+                            <input type="hidden" name="id" id="id" class="form-control"   #bid="ngModel" ngModel required [(ngModel)]="selectedstudent.sid"> 
+                            
+                        
+                          </div>
+
+                          <div class="form-group"  class="text-black" >
+                            <h6  class="text-dark"> Name</h6>
+                            <input type="text" name="name" id="name" class="form-control" [(ngModel)]="selectedstudent.name" readonly> 
+                            
+                           </div>
+                        <div class="form-group" class="text-black">
+                            <h6  class="text-dark">COURSE</h6>
+                            <input type="text" name="course" id="course" class="form-control"   
+                             [(ngModel)]="selectedstudent.course" readonly> 
+                            
+                        </div> 
+                  
+                        <div class="form-group" class="text-black">
+                          <h6  class="text-dark">DEPARTMENT</h6>
+                          <input type="text" name="department" id="deartment" class="form-control"   
+                           [(ngModel)]="selectedstudent.department" readonly> 
+                          
+                      </div> 
+                      <div class="form-group" class="text-black">
+                        <h6  class="text-dark">BATCH</h6>
+                        <input type="text" name="batch" id="batch" class="form-control"   
+                          [(ngModel)]="selectedstudent.batch" readonly> 
+                        
+                    </div> 
+                  
+                    <div class="form-group" class="text-black">
+                      <h6  class="text-dark">CONTACT NO:</h6>
+                      <input type="text" name="mob" id="mob" class="form-control"   
+                        [(ngModel)]="selectedstudent.mob" readonly> 
+                      
+                  </div> 
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" (click)="removeStudent()">Remove User</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </form>
+                    
+                </td>
+              
+               
+            </tr>
+        </tbody>
+   
+</table>

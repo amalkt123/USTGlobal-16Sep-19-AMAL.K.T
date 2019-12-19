@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.lang.Deprecated"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="com.ustglobal.finalproject.repo.StudentRepo"/>
+<fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+<fullyQualifiedTypeName name="javax.persistence.criteria.CriteriaBuilder.In"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.ustglobal.finalproject.repo.LoginRepo"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+<fullyQualifiedTypeName name="lombok.Data"/>
+<fullyQualifiedTypeName name="com.ustglobal.finalproject.service.StudentService"/>
+<fullyQualifiedTypeName name="com.ustglobal.finalproject.dto.LibrarianBean"/>
+<fullyQualifiedTypeName name="com.ustglobal.finalproject.dto.StudentBean"/>
+<fullyQualifiedTypeName name="com.ustglobal.finalproject.response.StudentResponse"/>
+<fullyQualifiedTypeName name="com.ustglobal.finalproject.dto.BookDetailsBean"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+<fullyQualifiedTypeName name="com.ustglobal.finalproject.dto.LoginBean"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+<fullyQualifiedTypeName name="com.ustglobal.finalproject.response.AdminResponse"/>
+<fullyQualifiedTypeName name="com.ustglobal.finalproject.dto.RegisterStudentBean"/>
+<fullyQualifiedTypeName name="com.ustglobal.finalproject.dto.BookBean"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+</qualifiedTypeNameHistroy>

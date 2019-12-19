@@ -1,0 +1,143 @@
+<form class="col-md-4 offset-4 mt-5 card card-body" [formGroup]="registerForm" (ngSubmit)="registerData(registerForm)">
+    <h1 class="text-center bg-dark text-white">Register</h1>
+    <h5>{{message}}</h5>
+    <div class="form-group">
+        <input type="text" name="name" id="name" class="form-control" placeholder="enter name....."
+            formControlName="name">
+
+        <div *ngIf="name.touched && name.invalid">
+            <div *ngIf="registerForm.get('name').errors.required">
+                <h6 class="alert-danger"> Name is required.</h6>
+            </div>
+            <div *ngIf="registerForm.get('name').errors.pattern">
+                <h6 class="alert-danger"> name must have only alphabets.</h6>
+            </div>
+            <!-- <div *ngIf="registerForm.get('name').errors.minlength">
+                <h6 class="alert-danger"> name must condain minimum 2 character.</h6>
+            </div>
+            <div *ngIf="registerForm.get('name').errors.maxength">
+                <h6 class="alert-danger"> name must condain maxlength of 50 character.</h6>
+            </div> -->
+
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" name="course" id="course" class="form-control" placeholder="enter course....."
+            formControlName="course">
+
+        <div *ngIf="course.touched && course.invalid">
+            <div *ngIf="registerForm.get('course').errors.required">
+                <h6 class="alert-danger">course is required.</h6>
+            </div>
+            <div *ngIf="registerForm.get('course').errors.pattern">
+                <h6 class="alert-danger"> course must have only alphabets.</h6>
+            </div>
+            <!-- <div *ngIf="registerForm.get('course').errors.minlength">
+                <h6 class="alert-danger"> course must have minimum 2 character.</h6>
+            </div>
+            <div *ngIf="registerForm.get('course').errors.maxlength">
+                <h6 class="alert-danger"> course must have maxlength of 50 character.</h6>
+            </div> -->
+
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" name="department" id="department" class="form-control" placeholder="enter department....."
+            formControlName="department">
+        <div *ngIf="department.touched && department.invalid">
+            <div *ngIf="registerForm.get('department').errors.required">
+                <h6 class="alert-danger">department is required.</h6>
+            </div>
+            <div *ngIf="registerForm.get('department').errors.pattern">
+                <h6 class="alert-danger"> department must condain only alphabets.</h6>
+            </div>
+            <!-- <div *ngIf="registerForm.get('department').errors.minlength">
+                <h6 class="alert-danger"> department must have minimum 2 character.</h6>
+            </div>
+            <div *ngIf="registerForm.get('department').errors.maxlength">
+                <h6 class="alert-danger"> department must have maxlength of 50 character.</h6>
+            </div> -->
+
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="number" name="batch" id="batch" class="form-control" placeholder="enter batch....."
+            formControlName="batch">
+        <div *ngIf="batch.touched && batch.invalid">
+            <div *ngIf="registerForm.get('batch').errors.required">
+                <h6 class="alert-danger">batch is required.</h6>
+            </div>
+            <div *ngIf="registerForm.get('batch').errors.pattern">
+                <h6 class="alert-danger"> batch must have only numbers(year of join).</h6>
+            </div>
+            <div *ngIf="registerForm.get('batch').errors.min">
+                <h6 class="alert-danger"> batch must be between 2015-2019.</h6>
+            </div>
+            <div *ngIf="registerForm.get('batch').errors.max">
+                <h6 class="alert-danger"> batch must be between 2015-2019.</h6>
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="tel" name="mob" id="mob" class="form-control" placeholder="enter mobile number....."
+            formControlName="mob">
+        <div *ngIf="mob.touched && mob.invalid">
+            <div *ngIf="registerForm.get('mob').errors.required">
+                <h6 class="alert-danger">mobile number is required.</h6>
+            </div>
+            <div *ngIf="registerForm.get('mob').errors.pattern">
+                <h6 class="alert-danger"> mob must have only numbers.</h6>
+            </div>
+            <div *ngIf="registerForm.get('mob').errors.min">
+                <h6 class="alert-danger"> mobile no have min 10 digit.</h6>
+            </div> 
+            <div *ngIf="registerForm.get('mob').errors.max">
+                <h6 class="alert-danger">mobile number have max 12 digit .</h6>
+            </div> 
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="email" name="username" id="username" class="form-control" placeholder="enter email...(username)."
+            formControlName="username">
+        <div *ngIf="username.touched && username.invalid">
+            <div *ngIf="registerForm.get('username').errors.required">
+                <h6 class="alert-danger">username is required.</h6>
+            </div>
+            <div *ngIf="registerForm.get('username').errors.email">
+                <h6 class="alert-danger"> username must be email formate.</h6>
+            </div>
+            <!-- <div *ngIf="registerForm.get('username').errors.minlength">
+                <h6 class="alert-danger">username must be min 7 character </h6>
+            </div>
+            <div *ngIf="registerForm.get('username').errors.maxlength">
+                <h6 class="alert-danger"> username must be min 30 character.</h6>
+            </div> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="password" name="password" id="password" class="form-control" placeholder="enter password....."
+            formControlName="password">
+             <div *ngIf="password.touched && password.invalid">
+        <div *ngIf="registerForm.get('password').errors.required">
+            <h6 class="alert-danger">password is required.</h6>
+        </div>
+
+        <div *ngIf="registerForm.get('password').errors.pattern">
+            <h6 class="alert-danger">password have only alphanumeric value.</h6>
+        </div>
+
+        <!-- <div *ngIf="registerForm.get('password').errors.minlength">
+            <h6 class="alert-danger">password must have 8 character</h6>
+        </div>
+        <div *ngIf="registerForm.get('password').errors.maxlength">
+            <h6 class="alert-danger"> password must have max of 30 character.</h6>
+        </div> -->
+    </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" [disabled]=registerForm.invalid class="btn-outline-dark float-right">Register</button>
+    </div>
+</form>

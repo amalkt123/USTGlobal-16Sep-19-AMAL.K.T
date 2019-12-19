@@ -1,0 +1,207 @@
+
+
+
+<form action="" class="col-md-8 offset-2 mt-5 card card-body">
+    <h1 class="text-center bg-dark text-white">Search</h1>
+    
+    <div class="form-group">
+        <input type="text" name="search" id="search" class="form-control" placeholder="enter search....." [(ngModel)]='search' >
+         <!-- <div *ngIf="search.touched && search.invalid">
+               <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+           </div>  -->
+    </div>
+    
+</form>
+<table class="table-borderd table-striped table-dark col-md-8 offset-2">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">SUBJECT</th>
+            <th scope="col">STATUS</th>
+            <th scope="col">STUDENT NAME</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+        <tbody>
+        <tr *ngFor="let book of books |trackbook:search">
+                <td>{{book.bookBean.id}}</td>
+                <td>{{book.bookBean.name | uppercase}}</td>
+                <td>{{book.bookBean.subject}}</td>
+                <td>{{book.status}}</td>
+                <td>{{book.studentBean.name}}</td>
+                <td> 
+                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" (click)="selectedBook(book)">
+        View
+      </button>
+      
+      <!-- Modal -->
+      <form action="" class="" #form='ngForm' (ngSubmit)="makeRequest(form)" *ngIf="selectedbook">
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Book Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            
+
+
+
+
+                    
+                 
+                        <h1 class="text-center bg-dark text-white">Track Book</h1>
+                        <div class="form-group" >
+                       
+                            
+                        </div>
+                        <div class="form-group" >
+                            <h6  class="text-dark">Book Name</h6>
+                            <input type="number" name="id" id="id" class="form-control"   #bid="ngModel" ngModel required [(ngModel)]="selectedbook.bookBean.id" readonly> 
+                            <!-- <div *ngIf="email.touched && email.invalid">
+                                <p class="alert alert-danger" *ngIf="email.errors.required">this field is required</p>
+                            </div> -->
+                        </div>
+                        <div class="form-group" >
+                            <h6  class="text-dark">Book Name</h6>
+                            <input type="text" name="name" id="name" class="form-control"  
+                              #name="ngModel" ngModel required [(ngModel)]="selectedbook.bookBean.name"> 
+                            <!-- <div *ngIf="email.touched && email.invalid">
+                                <p class="alert alert-danger" *ngIf="email.errors.required">this field is required</p>
+                            </div> -->
+                        </div>
+                        <div class="form-group">
+                          <h6 class="text-dark">BookSubject</h6>
+                          <input type="text" name="subject" id="subject" class="form-control"   
+                           #subject="ngModel" ngModel required [(ngModel)]="selectedbook.bookBean.subject"> 
+                             <!-- <div *ngIf="password.touched && password.invalid">
+                                 <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+                             </div> -->
+                      </div>
+                    
+                     
+                        <div class="form-group">
+                            <h6 class="text-dark">Book Author</h6>
+                            <input type="text" name="author" id="author" class="form-control"   
+                             #author="ngModel" ngModel required [(ngModel)]="selectedbook.bookBean.author"> 
+                               <!-- <div *ngIf="password.touched && password.invalid">
+                                   <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+                               </div> -->
+                        </div>
+                      
+                        <div class="form-group">
+                          <h6  class="text-dark">Book Publication</h6>
+                          <input type="text" name="publication" id="publication" class="form-control"   
+                           #publication="ngModel" ngModel required [(ngModel)]="selectedbook.bookBean.publication"> 
+                             <!-- <div *ngIf="password.touched && password.invalid">
+                                 <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+                             </div> -->
+                      </div>
+                    
+                      <div class="form-group">
+                        <h6  class="text-dark">Book Status</h6>
+                        <input type="text" name="status" id="status" class="form-control"   
+                         #status="ngModel" ngModel required [(ngModel)]="selectedbook.status"> 
+                           <!-- <div *ngIf="password.touched && password.invalid">
+                               <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+                           </div> -->
+                    </div>
+                    <div class="form-group">
+                      <h6  class="text-dark">Book Price</h6>
+                      <input type="text" name="price" id="prce" class="form-control"   
+                       #price="ngModel" ngModel required [(ngModel)]="selectedbook.bookBean.price"> 
+                         <!-- <div *ngIf="password.touched && password.invalid">
+                             <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+                         </div> -->
+                  </div>
+                  <!-- <div class="form-group">
+                    <h3  class="text-dark">Book Request Date</h3>
+                    <input type="text" name="price" id="prce" class="form-control"   
+                     #price="ngModel" ngModel required [(ngModel)]="selectedbook.requestDate"> 
+                        <div *ngIf="password.touched && password.invalid">
+                           <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+                       </div> -->
+                <!-- </div>
+                <div class="form-group" *ngIf="selectedbook.bookBean.issueDate">
+                    <h3  class="text-dark">Book Issue Date</h3>
+                    <input type="text" name="price" id="prce" class="form-control"   
+                     #price="ngModel" ngModel required [(ngModel)]="selectedbook.issueDate"> 
+                        <div *ngIf="password.touched && password.invalid">
+                           <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+                       </div> 
+                </div> --> 
+                <!-- <div class="form-group">
+                    <h3  class="text-dark">Book Status</h3>
+                    <input type="text" name="price" id="prce" class="form-control"   
+                     #price="ngModel" ngModel required [(ngModel)]="selectedbook.bookBean.status"> 
+                       
+                </div> -->
+                
+                  
+        <div class="form-group" class="text-black">
+            <h6  class="text-dark">Student Id</h6>
+            <input type="text" name="id" id="id" class="form-control" [(ngModel)]="selectedbook.studentBean.sid" readonly> 
+            
+        </div> 
+          <div class="form-group"  class="text-black" >
+            <h6  class="text-dark">Student Name</h6>
+            <input type="text" name="name" id="name" class="form-control" [(ngModel)]="selectedbook.studentBean.name" readonly> 
+            
+           </div>
+        <div class="form-group" class="text-black">
+            <h6  class="text-dark">Student Course</h6>
+            <input type="text" name="course" id="course" class="form-control"   
+             [(ngModel)]="selectedbook.studentBean.course" readonly> 
+            
+        </div> 
+  
+        <div class="form-group" class="text-black">
+          <h6  class="text-dark">Student Department</h6>
+          <input type="text" name="department" id="deartment" class="form-control"   
+           [(ngModel)]="selectedbook.studentBean.department" readonly> 
+          
+      </div> 
+      <div class="form-group" class="text-black">
+        <h6  class="text-dark">Student Batch</h6>
+        <input type="text" name="batch" id="batch" class="form-control"   
+          [(ngModel)]="selectedbook.studentBean.batch" readonly> 
+        
+    </div> 
+  
+    <div class="form-group" class="text-black">
+      <h6  class="text-dark">Student Contact no</h6>
+      <input type="text" name="mob" id="mob" class="form-control"   
+        [(ngModel)]="selectedbook.studentBean.mob" readonly> 
+      
+  </div>  
+                  
+                   
+              
+
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary" (click)="deleteBook()">Delete Book</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </form>
+                    
+                </td>
+              
+               
+            </tr>
+        </tbody>
+   
+</table>

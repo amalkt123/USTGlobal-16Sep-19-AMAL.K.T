@@ -1,0 +1,7 @@
+package com.ustglobal.finalproject.service;
+
+import com.ustglobal.finalproject.repo.StudentRepo;
+
+public class StudentServiceImpl implements StudentRepo{
+
+}

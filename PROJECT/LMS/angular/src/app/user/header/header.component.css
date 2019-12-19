@@ -1,0 +1,10 @@
+
+#page{
+    position: absolute;
+    background-size: cover;
+    opacity: 0.1;
+    background-color: blue;
+    filter: alpha(opacity=40);
+    background-attachment: fixed;
+}
+

@@ -1,0 +1,11 @@
+package com.ustglobal.finalproject.repo;
+
+import javax.persistence.criteria.CriteriaBuilder.In;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ustglobal.finalproject.dto.LoginBean;
+
+public interface LoginRepo extends JpaRepository<LoginBean, Integer> {
+
+}

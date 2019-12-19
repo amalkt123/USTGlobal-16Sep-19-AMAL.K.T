@@ -1,0 +1,19 @@
+package com.ustglobal.response;
+
+ lombok.Data;
+import lombok.ToString.Exclude;
+
+@Data
+public class AdminResponse {
+	private int statusCode;
+	private String message;
+	private String description;
+	private String type;
+	private StudentService studentBean;
+	private LibrarianResponse librarianBean;
+	private List<StudentBean> studentBeans;
+	private List<LibrarianBean> librarianBeans;
+	private List<BookBean> bookBeans;
+	private LoginBean loginBean;
+
+}

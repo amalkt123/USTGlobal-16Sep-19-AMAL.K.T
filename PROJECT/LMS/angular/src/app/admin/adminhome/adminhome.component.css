@@ -1,0 +1,21 @@
+img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    align-self: center;
+}
+.card{
+    margin-left: 5cm;
+    border-radius: 20px;
+ 
+}
+.card:hover{
+    transform:scale(1.2,1.2);
+    transition-delay: 20ms;
+}
+.card-deck{
+    margin-top: 2cm;
+    margin-bottom: 2cm;
+    margin-left: 5cm;
+    padding-left: 2cm;
+}

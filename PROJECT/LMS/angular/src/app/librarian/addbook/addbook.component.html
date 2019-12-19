@@ -1,0 +1,121 @@
+<form class="col-md-4 offset-4 mt-5 card card-body" [formGroup]="bookForm" (ngSubmit)="addBook(bookForm)">
+    <h1 class="text-center bg-dark text-white">ADD BOOK</h1>
+    <div>
+        <h6 class="alert-success">{{message}}</h6>
+    </div>
+    <div class="form-group">
+        <input type="text" name="name" id="name" class="form-control" placeholder="enter name....."
+            formControlName="name">
+        <div *ngIf="name.touched && name.invalid">
+
+            <div *ngIf="name.touched && name.invalid">
+                <div *ngIf="bookForm.get('name').errors.required">
+                    <h6 class="alert-danger"> Name is required.</h6>
+                </div>
+                <div *ngIf="bookForm.get('name').errors.pattern">
+                    <h6 class="alert-danger"> name must have only alphabets.</h6>
+                </div>
+                <!-- <div *ngIf="bookrForm.get('name').errors.minLength">
+                    <h6 class="alert-danger"> name must condain minimum 2 character.</h6>
+                </div>
+                <div *ngIf="bookForm.get('name').errors.maxLength">
+                    <h6 class="alert-danger"> name must condain maxlength of 50 character.</h6>
+                </div> -->
+
+            </div>
+        </div>
+    
+
+
+        <div class="form-group">
+            <input type="text" name="author" id="author" class="form-control" placeholder="enter  author....."
+                formControlName="author">
+            <div *ngIf="author.touched && author.invalid">
+
+
+                <div *ngIf="bookForm.get('author').errors.required">
+                    <h6 class="alert-danger"> Author is required.</h6>
+                </div>
+                <div *ngIf="bookForm.get('author').errors.pattern">
+                    <h6 class="alert-danger"> author must have only alphabets.</h6>
+                </div>
+                <!-- <div *ngIf="bookForm.get('author').errors.minLength">
+                    <h6 class="alert-danger"> author must condain minimum 2 character.</h6>
+                </div>
+                <div *ngIf="bookForm.get('author').errors.maxLength">
+                    <h6 class="alert-danger"> author must condain maxlength of 50 character.</h6>
+                </div> -->
+
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="subject" id="subject" class="form-control" placeholder="enter subject....."
+                formControlName="subject">
+            <div *ngIf="subject.touched && subject.invalid">
+
+                <div *ngIf="bookForm.get('subject').errors.required">
+                    <h6 class="alert-danger"> Subject is required.</h6>
+                </div>
+                <div *ngIf="bookForm.get('subject').errors.pattern">
+                    <h6 class="alert-danger"> subject must have only alphabets.</h6>
+                </div>
+                <!-- <div *ngIf="bookForm.get('subject').errors.minLength">
+                    <h6 class="alert-danger"> subject must condain minimum 2 character.</h6>
+                </div>
+                <div *ngIf="bookForm.get('subject').errors.maxLength">
+                    <h6 class="alert-danger"> subject must condain maxlength of 50 character.</h6>
+                </div> -->
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="publication" id="publication" class="form-control"
+                placeholder="enter publication....." formControlName="publication">
+            <div *ngIf="publication.touched && publication.invalid">
+
+
+                <div *ngIf="bookForm.get('publication').errors.required">
+                    <h6 class="alert-danger"> Publication is required.</h6>
+                </div>
+                <div *ngIf="bookForm.get('publication').errors.pattern">
+                    <h6 class="alert-danger"> publication must have only alphabets.</h6>
+                </div>
+                <!-- <div *ngIf="bokForm.get('publication').errors.minLength">
+                    <h6 class="alert-danger"> publication must condain minimum 2 character.</h6>
+                </div>
+                <div *ngIf="bookForm.get('publication').errors.maxLength">
+                    <h6 class="alert-danger"> publication must condain maxlength of 50 character.</h6>
+                </div> -->
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="number" name="price" id="price" class="form-control" placeholder="enter price....."
+                formControlName="price">
+            <div *ngIf="price.touched && price.invalid">
+
+                <div *ngIf="bookForm.get('price').errors.required">
+                    <h6 class="alert-danger"> Name is required.</h6>
+                </div>
+                <div *ngIf="bookForm.get('price').errors.pattern">
+                    <h6 class="alert-danger"> name must have only number.</h6>
+                </div>
+                <div *ngIf="bookForm.get('price').errors.min">
+                    <h6 class="alert-danger"> price min 2 rs.</h6>
+                </div>
+                <div *ngIf="bookForm.get('price').errors.max">
+                    <h6 class="alert-danger"> price max 3000000.</h6>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <!-- <button type="submit" class="btn-outline-dark float-right">ADD</button> -->
+            <button type="submit" [disabled]="bookForm.invalid" class="btn-outline-dark float-right">ADD</button> 
+            <button type="reset" class="btn-outline-dark float-right">RESET</button>
+        </div>
+        </div>
+</form>

@@ -1,0 +1,11 @@
+
+.card:hover{
+    transform: scale(1.2,1.2);
+    border-color: rgb(149, 78, 216);
+    border-width: 1px;
+}
+.card-deck{
+    margin-left: 1cm;
+    margin-top: 3cm;
+    padding-left: 3cm;;
+}

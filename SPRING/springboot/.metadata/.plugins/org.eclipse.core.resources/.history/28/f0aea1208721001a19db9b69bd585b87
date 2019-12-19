@@ -1,0 +1,17 @@
+package com.ustglobal.finalproject.service;
+
+public interface StudentService {
+	
+	
+	boolean register(RegisterStudentBean bean);
+	Object login(LoginBean loginBean);
+	 List<BookBean> searchBook();
+	 boolean makeRequest(int bid,int sid);
+	   List<BookDetailsBean> viewBag(int sid);
+	   List<BookDetailsBean> returnBook(int id);
+	   List<BookDetailsBean> bookReport(int sid);
+	   boolean changePassword(LoginBean bean);
+	   public boolean deleteUser(int id);
+
+
+}
