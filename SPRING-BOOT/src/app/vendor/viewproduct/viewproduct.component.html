@@ -1,0 +1,119 @@
+
+
+<form  class="col-md-8 offset-2 mt-5 card card-body">
+    <h1 class="text-center bg-dark text-white col-md-8 offset-2 ">Search</h1>
+    
+    <div class="form-group">
+        <input type="text" name="search" id="search" class="form-control" placeholder="enter search....." [(ngModel)]='search' >
+         <!-- <div *ngIf="search.touched && search.invalid">
+               <p class="alert alert-danger" *ngIf="password.errors.required">this field is required</p>
+           </div>  -->
+    </div>
+    
+</form>
+<table class="table-borderd table-striped table-dark col-md-8 offset-2">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">CATEGORY</th>
+            <th scope="col">COMPANY</th>
+            <th scope="col">QUANTITY</th>
+            <th scope="col">PRICE</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+        <tbody>
+        <tr *ngFor="let product of products |searchname:search ">
+                <td>{{product.pid}}</td>
+                <td>{{product.name | uppercase}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.company}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.price}}</td>
+                <td> 
+                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" (click)="selectedProduct(product)">
+        View
+      </button>
+      
+      <!-- Modal -->
+      <form action="" class="" #form='ngForm' (ngSubmit)="makeRequest(form)" *ngIf="selectedproduct">
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body alert alert-primary">
+            {{message}}
+
+
+
+            <h1 class="text-center  ">Student Details</h1>
+            <h5>{{message}}</h5>
+            <div class="form-group" >
+              <h6  class="text-dark"> ID</h6>
+                <input type="number" name="id" id="id" class="form-control"   #bid="ngModel" ngModel required [(ngModel)]="selectedproduct.pid" readonly> 
+                
+            
+              </div>
+
+              <div class="form-group"  class="text-black" >
+                <h6  class="text-dark"> NAME</h6>
+                <input type="text" name="name" id="name" class="form-control"     #name="ngModel" ngModel [(ngModel)]="selectedproduct.name" readonly> 
+                
+               </div>
+               <div class="form-group"  class="text-black" >
+                <h6  class="text-dark"> Company</h6>
+                <input type="text" name="company" id="company" class="form-control"    #company="ngModel" ngModel [(ngModel)]="selectedproduct.company" readonly> 
+                
+               </div>
+
+               <div class="form-group"  class="text-black" >
+                <h6  class="text-dark"> Price</h6>
+                <input type="text" name="price" id="price" class="form-control"   #price="ngModel" ngModel  [(ngModel)]="selectedproduct.price" > 
+                
+               </div>
+            
+
+
+               <div class="form-group"  class="text-black" >
+                <h6  class="text-dark"> Quantity</h6>
+                <input type="text" name="quantity" id="quantity" class="form-control"    #quantity="ngModel" ngModel [(ngModel)]="selectedproduct.quantity"> 
+                
+               </div>
+
+
+        
+
+
+                    
+                       
+              
+
+
+
+            </div>
+            <div class="modal-footer">
+            
+              <button type="submit" class="btn btn-primary">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </form>
+                    
+                </td>
+              
+               
+            </tr>
+        </tbody>
+   
+</table>
