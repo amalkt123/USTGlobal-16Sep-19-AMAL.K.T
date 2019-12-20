@@ -1,0 +1,108 @@
+<div class=" col-md-6 offset-md-3 mt-5">
+    <table class="table border-primary"border-primary >    
+      <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">PID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">CATEGORY</th>
+                <th scope="col">COMPANY</th>
+                <th scope="col">QUANTITY</th>
+                <th scope="col">PRICE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor ="let product of products;index as i">
+                
+                <td>{{i+1}}</td>
+                <td>{{product.pid}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.company}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.price}}</td>
+
+               <td> <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modelId" (click)="productDetails(product)">Update</button></td>
+               <td> <button type="button" class="btn btn-outline-danger" (click)="deleteProduct(product)">Remove</button></td>
+              </tr> 
+            </tbody>
+          </table>
+        </div>
+
+        <div class="modal" *ngIf="updateStatus" tabindex="-1" role="dialog" id="modelId">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="bg">
+                  <h5 class="modal-title text-center">UpdateProduct</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                
+  <div class="mt-1 card card-body mb-1">
+    <form action="" #form="ngForm" (ngSubmit)="updateProduct(form)">
+            <input type="hidden" name="pid" #pid="ngModel" ngModel [(ngModel)]="updateStatus.bid">
+            <div class="form-group"><label for="">NAME</label>
+                <input required minlength="2" maxlength="25"
+                 type="text" name="name" id="name" #name='ngModel' ngModel
+                class="form-control mb-3" placeholder="Enter name"></div>
+            <div class="alert alert=danger" *ngIf="name.touched && name.invalid" style="color: red">
+                <div *ngIf="name.errors.required" >filed is required</div>
+                <div *ngIf="name.errors.minlength">Name Should Be Minimum {{name.errors.minlength.requiredLength}} charecter</div>
+            </div>
+    
+    <div class="form-group">
+        <div class="form-group"><label for="">CATEGORY</label>
+            <input required minlength="2" maxlength="25"
+             type="text" name="category" id="category" #category='ngModel' ngModel
+            class="form-control mb-3" placeholder="Enter category"></div>
+        <div class="alert alert=danger" *ngIf="category.touched && category.invalid" style="color: red">
+            <div *ngIf="category.errors.required" >filed is required</div>
+            <div *ngIf="category.errors.minlength">Name Should Be Minimum {{category.errors.minlength.requiredLength}} charecter</div>
+        </div>
+</div>
+ <div class="form-group">
+    <div class="form-group"><label for="">COMPANY</label>
+        <input required minlength="2" maxlength="25"
+         type="text" name="company" id="company" #company='ngModel' ngModel
+        class="form-control mb-3" placeholder="Enter category"></div>
+    <div class="alert alert=danger" *ngIf="company.touched && company.invalid" style="color: red">
+        <div *ngIf="company.errors.required" >filed is required</div>
+        <div *ngIf="company.errors.minlength">Name Should Be Minimum {{company.errors.minlength.requiredLength}} charecter</div>
+    </div>
+</div>
+
+ <div class="form-group">
+    <div class="form-group"><label for="">QUANTITY</label>
+        <input required minlength="0" maxlength="2" pattern="[0-9._%+-]*"
+        title="enter quantity upto 99"
+         type="tel" name="quantity" id="quantity" #quantity='ngModel' ngModel
+        class="form-control mb-3" placeholder="Enter quantity"></div>
+    <div class="alert alert=danger" *ngIf="quantity.touched && quantity.invalid" style="color: red">
+        <div *ngIf="quantity.errors.required" >filed is required</div>
+        <div *ngIf="quantity.errors.minlength">Name Should Be Minimum {{quantity.errors.minlength.requiredLength}} charecter</div>
+        <div *ngIf="quantity.errors.pattern">enter only number</div>
+    </div>
+</div>
+ <div class="form-group">
+    <div class="form-group"><label for="">PRICE</label>
+        <input required minlength="0" maxlength="4" pattern="[0-9._%+-]*"
+        title="enter price upto 9999"
+         type="tel" name="price" id="number" #price='ngModel' ngModel
+        class="form-control mb-3" placeholder="Enter category"></div>
+    <div class="alert alert=danger" *ngIf="price.touched && price.invalid" style="color: red">
+        <div *ngIf="price.errors.required" >filed is required</div>
+        <div *ngIf="price.errors.pattern">enter only number</div>
+    </div>
+</div>
+        <div class="from-group">
+            <button type="button" class="btn btn-outline-danger float-left" data-dismiss="modal">Close</button>
+            <button class="btn btn-outline-success float-right" type="submit">UPDATE</button>
+        </div>
+    </form>
+  </div>
+              </div>
+            </div>
+          </div>
+        </div>
