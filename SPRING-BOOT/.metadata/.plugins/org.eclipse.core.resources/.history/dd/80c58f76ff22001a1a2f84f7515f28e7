@@ -1,0 +1,9 @@
+package com.ustglobal.finalproject.dto;
+
+import javax.persistence.Column;
+
+public class productOrder {
+	private double totalPrice;
+	private double totalPriceWithGst;
+
+}

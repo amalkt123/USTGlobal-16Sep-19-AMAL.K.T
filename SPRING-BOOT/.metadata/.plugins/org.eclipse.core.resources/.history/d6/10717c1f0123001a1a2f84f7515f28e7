@@ -1,0 +1,115 @@
+package com.ustglobal.finalproject.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.mysql.fabric.xmlrpc.base.Array;
+import com.ustglobal.finalproject.dto.OrderInfo;
+import com.ustglobal.finalproject.dto.ProductInfoBean;
+
+@Repository
+public class SMSApplicationDAOImpl implements SMSApplicationDAO {
+	@Autowired
+	EntityManagerFactory factory;
+
+	@Override
+	public boolean addProduct(ProductInfoBean bean) {
+		EntityManager manager=factory.createEntityManager();
+		EntityTransaction transaction=manager.getTransaction();
+		transaction.begin();
+		try {
+			
+			manager.persist(bean);
+			transaction.commit();
+			return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+			return false;
+		}
+	}
+
+	@Override
+	public List<ProductInfoBean> viewProduct() {
+		EntityManager manager=factory.createEntityManager();
+		String jpql="from ProductInfoBean where quantity>0";
+	    try {
+	    	TypedQuery<ProductInfoBean> query=manager.createQuery(jpql,ProductInfoBean.class);
+	    	List<ProductInfoBean> beans=query.getResultList();
+	    	return beans;
+	    }catch (Exception e) {
+	    	e.printStackTrace();
+	    	return null;
+		}
+
+	}
+
+	@Override
+	public boolean updateProduct(ProductInfoBean bean) {
+		EntityManager manager=factory.createEntityManager();
+		EntityTransaction transaction=manager.getTransaction();
+		transaction.begin();
+		try {
+		ProductInfoBean infoBean=manager.find(ProductInfoBean.class, bean.getPid());
+		infoBean.setCategory(bean.getCategory());
+		infoBean.setCompany(bean.getCompany());
+		infoBean.setName(bean.getName());
+		infoBean.setPrice(bean.getPrice());
+		infoBean.setQuantity(bean.getQuantity());
+		transaction.commit();
+		return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+			return false;
+			// TODO: handle exception
+		}
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public boolean removeProduct(ProductInfoBean bean) {
+		EntityManager manager=factory.createEntityManager();
+		EntityTransaction transaction=manager.getTransaction();
+		transaction.begin();
+		try {
+			manager.remove(bean);
+			transaction.commit();
+			return true;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean orderProduct(ProductInfoBean bean) {
+		EntityManager manager=factory.createEntityManager();
+		EntityTransaction transaction=manager.getTransaction();
+		transaction.begin();
+		try {
+			ProductInfoBean productInfoBean=manager.find(ProductInfoBean.class,bean.getPid() );
+			productInfoBean.setQuantity(productInfoBean.getQuantity()-bean.getQuantity());
+			OrderInfo info=new OrderInfo();
+			info.setTotalPrice(bean.getPrice()*bean.getQuantity());
+			info.setTotalPriceWithGst(bean.getQuantity()*10*bean.getPrice());
+			
+			return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+			// TODO: handle exception
+		}
+		// TODO Auto-generated method stub
+
+	}
+
+}

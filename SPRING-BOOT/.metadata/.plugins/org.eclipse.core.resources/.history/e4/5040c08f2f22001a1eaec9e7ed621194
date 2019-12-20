@@ -1,0 +1,23 @@
+package com.ustglobal.finalproject.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ustglobal.finalproject.dto.LoginBean;
+import com.ustglobal.finalproject.repo.LoginRepo;
+
+@Service
+public class UserServiceimpl implements UserService{
+	@Autowired
+	private LoginRepo loginRepo;
+
+	@Override
+	public LoginBean login(LoginBean bean) {
+		
+		
+	    // loginRepo.findByEmail(bean)
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

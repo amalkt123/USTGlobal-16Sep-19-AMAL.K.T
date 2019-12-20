@@ -1,0 +1,11 @@
+package com.ustglobal.finalproject.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.ustglobal.finalproject.dto.LoginBean;
+
+@Transactional
+public interface LoginRepo extends JpaRepository<LoginBean, Integer>{
+
+}

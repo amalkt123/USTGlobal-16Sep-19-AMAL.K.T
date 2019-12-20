@@ -1,0 +1,9 @@
+package com.ustglobal.finalproject.service;
+
+import com.ustglobal.finalproject.dto.LoginBean;
+
+public interface UserService {
+
+	LoginBean login(LoginBean bean);
+
+}

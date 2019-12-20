@@ -1,0 +1,13 @@
+package com.ustglobal.finalproject.controller;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin(origins = "*",allowedHeaders = "*",allowCredentials = "true")
+@RestController
+public class UserController {
+	
+
+	
+	
+}

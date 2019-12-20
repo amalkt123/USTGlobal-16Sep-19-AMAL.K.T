@@ -1,0 +1,5 @@
+package com.ustglobal.finalproject.dao;
+
+public class SMSApplicationDAOImpl {
+
+}

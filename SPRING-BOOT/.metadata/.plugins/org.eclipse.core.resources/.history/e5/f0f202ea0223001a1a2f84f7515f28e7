@@ -1,0 +1,12 @@
+package com.ustglobal.finalproject.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ustglobal.finalproject.dao.SMSApplicationDAO;
+
+@Service
+public class SMSApplicationServiceImpl {
+	SMSApplicationDAO dao;
+
+}

@@ -1,0 +1,21 @@
+package com.ustglobal.finalproject.dto;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+
+@Entity
+@Table(name = "productinfo")
+public class ProductInfoBean {
+	@Id
+	private int id;
+	private String name;
+	private String category;
+	private String company;
+	private int quantity;
+	private double price;
+
+}

@@ -1,0 +1,7 @@
+package com.ustglobal.finalproject.config;
+
+@Configuration
+public class ORMConfig {
+	
+
+}

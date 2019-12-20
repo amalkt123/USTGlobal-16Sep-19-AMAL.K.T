@@ -1,0 +1,60 @@
+package com.ustglobal.finalproject.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.ustglobal.finalproject.dto.OrderInfo;
+import com.ustglobal.finalproject.dto.ProductInfoBean;
+
+@Repository
+public class SMSApplicationDAOImpl implements SMSApplicationDAO {
+	@Autowired
+	EntityManagerFactory factory;
+
+	@Override
+	public boolean addProduct(ProductInfoBean bean) {
+		EntityManager manager=factory.createEntityManager();
+		EntityTransaction transaction=manager.getTransaction();
+		try {
+			transaction.begin();
+			manager.persist(bean);
+			transaction.commit();
+			return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+			return false;
+		}
+	}
+
+	@Override
+	public ProductInfoBean viewProduct() {
+		EntityManager manager=factory.createEntityManager();
+		String jpql="from ProductInfoBean where quantity>0";
+
+		return null;
+	}
+
+	@Override
+	public boolean updateProduct(ProductInfoBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removeProduct(ProductInfoBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean orderProduct(OrderInfo info) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.ustglobal.finalproject.service;
+
+public interface SMSApplicationServiceImpl {
+
+}
