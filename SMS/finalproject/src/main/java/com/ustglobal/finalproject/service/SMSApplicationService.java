@@ -16,6 +16,7 @@ public interface SMSApplicationService {
      boolean removeProduct(int id);
      boolean orderProduct(OrderInfo info);
      boolean deleteProduct(ProductInfoBean bean);
+     List<OrderInfo> orderInfos();
      
 
 

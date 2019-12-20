@@ -18,6 +18,7 @@ public interface SMSApplicationDAO {
      List<ProductInfoBean> viewAllProduct();
      List<OrderInfo> viewOrderinfo();
      boolean deleteProduct(ProductInfoBean bean);
+     List<OrderInfo> orderInfos();
      
 
 }

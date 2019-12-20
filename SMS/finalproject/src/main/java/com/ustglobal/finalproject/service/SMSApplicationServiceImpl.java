@@ -63,4 +63,10 @@ public class SMSApplicationServiceImpl implements SMSApplicationService {
 		return dao.deleteProduct(bean);
 	}
 
+	@Override
+	public List<OrderInfo> orderInfos() {
+		// TODO Auto-generated method stub
+		return dao.orderInfos();
+	}
+
 }

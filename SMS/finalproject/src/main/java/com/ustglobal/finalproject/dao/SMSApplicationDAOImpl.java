@@ -200,4 +200,21 @@ public class SMSApplicationDAOImpl implements SMSApplicationDAO {
 
 	}
 
+	@Override
+	public List<OrderInfo> orderInfos() {
+		// TODO Auto-generated method stub
+		EntityManager manager=factory.createEntityManager();
+		String jpql="from OrderInfo";
+	    try {
+	    	TypedQuery<OrderInfo> query=manager.createQuery(jpql,OrderInfo.class);
+	    	List<OrderInfo> beans=query.getResultList();
+	    	System.out.println(beans);
+	    	return beans;
+	    }catch (Exception e) {
+	    	e.printStackTrace();
+	    	return null;
+		}
+
+	}
+
 }

@@ -157,4 +157,43 @@ VenderResponse updateBook(@RequestBody ProductInfoBean bean) {
 	}
 
 	
+	@PostMapping(path ="/deleteproduct",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	VenderResponse order(@RequestBody ProductInfoBean  bean){
+		boolean check=service.deleteProduct(bean);
+		VenderResponse  response=new VenderResponse();
+		if(check){
+		    response.setStatusCode(SUCCESS_STATUS_CODE);
+			response.setStatusMessage(SUCCESS_MESSAGE);
+			response.setDescription("addes successfully");
+		}
+		else {
+			response.setStatusMessage(FAILD_MESSAGE);
+			response.setStatusCode(FAILD_STATUS_CODE);
+		}
+		
+		return response;
+		
+	}
+
+	
+
+	@GetMapping(path ="/vieworder",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	VenderResponse vieworder(){
+		List<OrderInfo> infos=service.orderInfos();
+		VenderResponse  response=new VenderResponse();
+		if(info){
+		    response.setStatusCode(SUCCESS_STATUS_CODE);
+			response.setStatusMessage(SUCCESS_MESSAGE);
+			response.setDescription("addes successfully");
+		}
+		else {
+			response.setStatusMessage(FAILD_MESSAGE);
+			response.setStatusCode(FAILD_STATUS_CODE);
+		}
+		
+		return response;
+		
+	}
+
+	
 }
