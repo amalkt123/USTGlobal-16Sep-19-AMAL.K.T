@@ -1,0 +1,43 @@
+package com.ustglobal.finalproject.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ustglobal.finalproject.dao.IEmailDAO;
+import com.ustglobal.finalproject.dto.UserBean;
+@Service
+public class EmailServiceImpl implements IEmailService{
+
+	@Autowired
+	private IEmailDAO dao;
+	@Override
+	public boolean registerUser(UserBean user) {
+		// TODO Auto-generated method stub
+		return dao.registerUser(user);
+	}
+
+	@Override
+	public UserBean loginUser(String email, String password) {
+		// TODO Auto-generated method stub
+		return dao.loginUser(email, password);
+	}
+
+	@Override
+	public UserBean forgotPassowrd(String email, String question, String answer) {
+		// TODO Auto-generated method stub
+		return dao.forgotPassowrd(email, question, answer);
+	}
+
+	@Override
+	public boolean changePassword(String email, String password, String newPassword) {
+		// TODO Auto-generated method stub
+		return dao.changePassword(email, password, newPassword);
+	}
+
+	@Override
+	public boolean compose(String subject, String message, String status, String from_email, String to_mail) {
+		// TODO Auto-generated method stub
+		return dao.compose(subject, message, status, from_email, to_mail);
+	}
+
+}

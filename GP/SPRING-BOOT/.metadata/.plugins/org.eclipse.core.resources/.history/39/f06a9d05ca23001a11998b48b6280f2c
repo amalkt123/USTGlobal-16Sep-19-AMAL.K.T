@@ -1,0 +1,11 @@
+package com.ustglobal.finalproject.dao;
+
+import com.ustglobal.finalproject.dto.UserBean;
+
+public interface IEmailDAO {
+	public boolean registerUser(UserBean user);
+	public UserBean loginUser(String email,String password);
+	public String forgotPassowrd(String email,String question,String answer);
+	public boolean changePassword(String email, String password,String newPassword);
+	public boolean compose(String subject,String message,String status,String from_email,String to_mail);
+}

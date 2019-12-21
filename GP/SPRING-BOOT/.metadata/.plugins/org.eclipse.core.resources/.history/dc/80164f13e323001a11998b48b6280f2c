@@ -1,0 +1,105 @@
+package com.ustglobal.finalproject.controller;
+
+
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ustglobal.finalproject.dto.EmailResponse;
+import com.ustglobal.finalproject.dto.UserBean;
+import com.ustglobal.finalproject.service.IEmailService;
+
+@RestController
+public class EmailController {
+
+	@Autowired
+	private IEmailService service;
+	@Autowired
+	private EmailResponse response;
+	
+	@PostMapping(path = "/register",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	public EmailResponse regisetrUser(@RequestBody UserBean user) {
+		if(service.registerUser(user)) {
+			response.setStatuscode(201);
+			response.setMessage("success");
+			response.setDescription("User Registered");
+		} else {
+			response.setStatuscode(401);
+			response.setMessage("success");
+			response.setDescription("User Registered");
+		}
+		return response;
+	}
+	
+	
+	@PostMapping(path = "/login",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	public EmailResponse loginUser(@RequestBody UserBean user) {
+		UserBean user1 = service.loginUser(user.getEmail(),user.getPassword());
+		if(user1!=null) {
+			response.setStatuscode(201);
+			response.setMessage("success");
+			response.setDescription("User logined");
+			response.setUser(Arrays.asList(user1));
+		} else {
+			response.setStatuscode(401);
+			response.setMessage("success");
+			response.setDescription("User not logined");
+		}
+		return response;
+	}
+	
+	@PostMapping(path = "/forgotpassword",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	public EmailResponse forgotPasswordr(@RequestParam("email") String email,@RequestParam("question") String question,@RequestParam("answer") String answer ) {
+		UserBean pass =service.forgotPassowrd(email, question, answer);
+		if(pass!=null) {
+			response.setStatuscode(201);
+			response.setMessage("success");
+			response.setDescription("User getting ");
+			response.setUser(Arrays.asList(pass));
+		} else {
+			response.setStatuscode(401);
+			response.setMessage("success");
+			response.setDescription("User not getting");
+		}
+		return response;
+	}
+	@PutMapping(path = "/changepassword",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	public EmailResponse changePasswordr(@RequestParam("email") String email,@RequestParam("password") String password,@RequestParam("newPassword") String newPassword ) {
+		if(service.changePassword(email, password, newPassword)) {
+			response.setStatuscode(201);
+			response.setMessage("success");
+			response.setDescription("password changed");
+		} else {
+			response.setStatuscode(401);
+			response.setMessage("failure");
+			response.setDescription("password not changed");
+		}
+		return response;
+	}
+	
+	
+	
+	@PostMapping(path = "/compose",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	public EmailResponse compose(@RequestParam("subject") String subject,@RequestParam("message") String message
+			,@RequestParam("email") String email,@RequestParam("id")int id ) {
+		
+		if(service.compose(subject, message, email,id)) {
+			response.setStatuscode(201);
+			response.setMessage("success");
+			response.setDescription("mail composed");
+			
+		} else {
+			response.setStatuscode(401);
+			response.setMessage("success");
+			response.setDescription("mail not composed");
+		}
+		return response;
+	}
+}

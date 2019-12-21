@@ -1,0 +1,11 @@
+package com.ustglobal.finalproject.service;
+
+import com.ustglobal.finalproject.dto.UserBean;
+
+public interface IEmailService {
+	public boolean registerUser(UserBean user);
+	public UserBean loginUser(String email,String password);
+	public UserBean forgotPassowrd(String email,String question,String answer);
+	public boolean changePassword(String email, String password,String newPassword);
+	public boolean compose(String subject, String message, String to_mail,int id);
+}

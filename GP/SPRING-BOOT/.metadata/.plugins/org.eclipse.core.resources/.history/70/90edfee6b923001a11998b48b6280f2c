@@ -1,0 +1,9 @@
+package com.ustglobal.finalproject.dao;
+
+import com.tyss.library.management.librarymanagement.dto.Users;
+import com.ustglobal.finalproject.dto.UserBean;
+
+public interface IEmailDAO {
+	public boolean registerUser(UserBean user);
+	public Users loginUser(String email,String password);
+}

@@ -1,0 +1,14 @@
+package com.ustglobal.finalproject.dto;
+
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class EmailResponse {
+	private String message;
+	private int statuscode;
+	private String description;
+	private List<UserBean> user;
+	private List<EmailBean> email;
+}
